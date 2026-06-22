@@ -56,8 +56,9 @@ Testo:
 
 - Pietro: "Domani riesci a passare dal retro prima del pranzo?"
 - Sara: "Solo dieci minuti, poi devo andare in sala."
-- Pietro: "Mi basta. Ti lascio due cassette vuote da mettere vicino al banco."
-- Sara: "Ok, ma scrivilo anche sul foglio o poi sembra sempre che sparisca qualcosa."
+- Pietro: "Mi bastanoo! Ti lascio due cassette vuote da mettere vicino al banco."
+- Sara: "Ok, ma scrivilo anche sul foglio o poi sembra sempre che sparisca qualcosa..."
+- Pietro: "Ok
 
 Informazione utile: rumore realistico e piccolo depistaggio. Collega Sara al retro solo di giorno e per una ragione innocua.
 
