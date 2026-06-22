@@ -20,6 +20,70 @@ Le tre fasi si sbloccano progressivamente. Il facilitatore gestisce le password 
 
 ---
 
+## Stack tecnologico
+
+<div align="center">
+<table>
+<tr>
+
+<td align="center" valign="top" width="25%">
+<br>
+<b>🌐 Frontend</b>
+<br><br>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+<br>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+<br>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+<br><br>
+<sub>Zero framework, zero build step.<br>Un singolo file HTML self-contained.</sub>
+<br><br>
+</td>
+
+<td align="center" valign="top" width="25%">
+<br>
+<b>🤖 AI</b>
+<br><br>
+<img src="https://img.shields.io/badge/Claude_Haiku_4.5-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Haiku 4.5" />
+<br>
+<img src="https://img.shields.io/badge/Gemini_2.5_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini 2.5 Flash" />
+<br><br>
+<sub>Testimone AI con streaming SSE.<br>Basta una chiave — Claude o Gemini.</sub>
+<br><br>
+</td>
+
+<td align="center" valign="top" width="25%">
+<br>
+<b>🎨 UI</b>
+<br><br>
+<img src="https://img.shields.io/badge/Tabler_Icons-228AE6?style=for-the-badge&logo=tabler&logoColor=white" alt="Tabler Icons" />
+<br>
+<img src="https://img.shields.io/badge/Poppins-FF6B6B?style=for-the-badge&logo=googlefonts&logoColor=white" alt="Poppins" />
+<br>
+<img src="https://img.shields.io/badge/Oddval_Text-2C2016?style=for-the-badge&logoColor=white" alt="Oddval Text" />
+<br><br>
+<sub>Font locali, nessuna CDN per i font.<br>CSS custom properties per il tema.</sub>
+<br><br>
+</td>
+
+<td align="center" valign="top" width="25%">
+<br>
+<b>📊 Data</b>
+<br><br>
+<img src="https://img.shields.io/badge/Canvas_API-FF6B35?style=for-the-badge&logo=html5&logoColor=white" alt="Canvas API" />
+<br>
+<img src="https://img.shields.io/badge/LocalStorage-34A853?style=for-the-badge&logo=googlechrome&logoColor=white" alt="LocalStorage" />
+<br><br>
+<sub>Grafici economici via Canvas nativo.<br>Stato di gioco persistito nel browser.</sub>
+<br><br>
+</td>
+
+</tr>
+</table>
+</div>
+
+---
+
 ## Struttura dei materiali
 
 ```
