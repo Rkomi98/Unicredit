@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Da trattoria in crisi a rilancio sostenibile</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <style>
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Regular.otf") format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Medium.otf") format("opentype");font-weight:500;font-display:swap}
@@ -325,6 +326,7 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
         <input type="password" id="api-key-gemini-title" class="api-title-input" placeholder="Gemini — AIza..." autocomplete="off">
       </div>
       <div style="height:22px"></div>
+      <button class="btn ghost full" onclick="scaricaZip(this)" style="margin-bottom:10px"><i class="ti ti-download" aria-hidden="true"></i> Scarica il gioco (ZIP)</button>
       <button class="btn primary big full" onclick="startGame()">Entra in cucina <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
       <div class="title-foot">Il nome si può cambiare solo qui, prima di iniziare.</div>
     </div>
@@ -464,6 +466,15 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
       <div class="start-screen">
         <p>Quando premi <strong>Via!</strong> parte il cronometro: da quel momento ogni secondo pesa sul saldo che porterai nella fase finale.</p>
         <button class="btn primary big" onclick="startInvestigation()"><i class="ti ti-player-play" aria-hidden="true"></i> Pronti? Via!</button>
+        <div class="sep" style="margin:22px 0 16px"></div>
+        <div style="text-align:left">
+          <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.55">Il testimone gira su un LLM (Claude o Gemini). Con la chiave Gemini puoi estendere l'analisi all'<strong>audio</strong> e ad altri modelli multimodali — per esempio passare una registrazione a <code style="font-size:11.5px;background:var(--fix-bg);padding:1px 5px;border-radius:4px">gemini-2.5-flash</code> e ricevere una trascrizione o un'analisi del tono.</div>
+          <button class="btn ghost" id="gemini-reveal-btn" onclick="toggleGeminiReveal()"><i class="ti ti-key" aria-hidden="true"></i> Mostra chiave Gemini</button>
+          <div id="gemini-key-reveal" style="display:none;margin-top:10px">
+            <code style="display:block;font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--calc-bg);border:1px solid var(--line);border-radius:9px;padding:11px 13px;font-size:13px;color:var(--ink);word-break:break-all" id="gemini-key-text">—</code>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.5">Copia questa chiave per usarla direttamente con l'API Gemini per analisi audio o altri usi multimodali.</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -665,7 +676,6 @@ const PASS_FINALE = "OhNo!";                            // riepilogo finale
 const PASS_RESET  = "ResetStella!";                     // reset partita (admin)
 const MAX_TENTATIVI = 3;
 const COOLDOWN_MS = { 1: 8*60*1000, 2: 5*60*1000 };     // lock "studio con Claude" per fase
-const CHEF_QUIT_MS = 7*60*1000;
 const TUT_BUDGET = 20000;
 const F2_LIQUIDITA = 22290;
 const F2_FIDO = 8500;
@@ -742,7 +752,7 @@ function defaultState() {
     params: [defaultParams(), defaultParams(), defaultParams(), defaultParams()],
     timer_started: false, timer_start: null, timer_elapsed: 0, timer_stopped: false,
     accuse_sbagliate: 0, colpevole_trovato: false, chat_resets: 0,
-    phaseArrival: {}, chef_quit_shown: false,
+    phaseArrival: {},
     direzione: null, upfront_pagato: false
   };
 }
@@ -806,31 +816,6 @@ function startCooldownTicker(fase){
     if (phaseCooldownRemaining(fase) <= 0){ clearInterval(cooldownInterval); updateCalc(fase); }
   }, 1000);
 }
-// ── Fase 2: lo chef si licenzia dopo 10 minuti sulla pagina ──────────────────
-let chefQuitTimeout = null;
-function scheduleChefQuit(fase){
-  clearTimeout(chefQuitTimeout);
-  if (fase !== 2 || state.chef_quit_shown) return;
-  if (!state.phaseArrival || !state.phaseArrival[2]) return;
-  const remaining = CHEF_QUIT_MS - (Date.now() - state.phaseArrival[2]);
-  if (remaining <= 0){ showChefQuit(); return; }
-  chefQuitTimeout = setTimeout(showChefQuit, remaining);
-}
-function showChefQuit(){
-  if (state.chef_quit_shown) return;
-  state.chef_quit_shown = true;
-  saveState();
-  chefQuitModal();
-}
-function chefQuitModal(){
-  openModal(`
-    <div class="pop-badge bad"><i class="ti ti-user-x"></i></div>
-    <h3>Lo chef si è licenziato!</h3>
-    <p class="ptxt">Colpo di scena a rilancio in corso: <strong>lo chef ha dato le dimissioni a sorpresa</strong> e la cucina è rimasta scoperta. Devi correre ai ripari — rivedi il <strong>costo del personale</strong> per coprire il servizio prima di chiudere il mese.</p>
-    <button class="btn primary full" onclick="closeModal()">Ho capito, prendo provvedimenti <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
-  `);
-}
-
 // ── objective bar ────────────────────────────────────────────────────
 const OBIETTIVI = {
   0: 'scegli la <b>strategia prudente</b> che tiene in vita il ristorante, poi porta i cursori al <b>100% di coerenza</b>.',
@@ -1472,7 +1457,6 @@ function showPhase(fase) {
   else if (fase === 3) renderFase3();
   updateObiettivo(fase);
   startCooldownTicker(fase);
-  scheduleChefQuit(fase);
   renderName();
   updateSaldoBar();
   window.scrollTo(0,0);
@@ -1862,7 +1846,6 @@ function renderChart() {
 function mostraRiepilogo() {
   recomputeFinancials();
   clearInterval(cooldownInterval);
-  clearTimeout(chefQuitTimeout);
   const ob = document.getElementById("obiettivo-bar"); if (ob) ob.classList.add("hidden");
   [0,1,2,3].forEach(f => { const sc=document.getElementById(`screen-${f}`); if(sc) sc.style.display = "none"; });
   document.getElementById("screen-riepilogo").style.display = "block";
@@ -2158,6 +2141,53 @@ function appendMsg(tipo, testo) {
   return el;
 }
 function scrollChat(){ const box = document.getElementById("chat-box"); if(box) box.scrollTop = box.scrollHeight; }
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  SCARICA ZIP
+// ═══════════════════════════════════════════════════════════════════════════
+async function scaricaZip(btn) {
+  if (typeof JSZip === "undefined") { alert("Libreria ZIP non caricata — controlla la connessione e riprova."); return; }
+  btnBusy(btn, "Preparazione ZIP…");
+  try {
+    const zip = new JSZip();
+    zip.file("restaurant_game.html", "<!DOCTYPE html>\n" + document.documentElement.outerHTML);
+    const fonti = zip.folder("fonts");
+    const fontPaths = [
+      "fonts/OddvalText-Regular.otf","fonts/OddvalText-Medium.otf",
+      "fonts/OddvalText-SemiBold.otf","fonts/OddvalText-Bold.otf","fonts/OddvalText-Black.otf",
+      "fonts/Poppins-Regular.ttf","fonts/Poppins-Medium.ttf",
+      "fonts/Poppins-SemiBold.ttf","fonts/Poppins-Bold.ttf"
+    ];
+    await Promise.all(fontPaths.map(async path => {
+      try { const res = await fetch(path); if (res.ok) fonti.file(path.replace("fonts/",""), await res.blob()); } catch(_){}
+    }));
+    const blob = await zip.generateAsync({ type:"blob", compression:"STORE" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "trattoria_della_stella.zip";
+    a.click(); URL.revokeObjectURL(a.href);
+  } catch(e) { alert("Errore ZIP: " + (e?.message || e)); }
+  btnRestore(btn);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  GEMINI KEY REVEAL (Fase 3)
+// ═══════════════════════════════════════════════════════════════════════════
+function toggleGeminiReveal() {
+  const div = document.getElementById("gemini-key-reveal");
+  const btn = document.getElementById("gemini-reveal-btn");
+  if (!div || !btn) return;
+  const visible = div.style.display !== "none";
+  if (!visible) {
+    const key = getGeminiKey();
+    document.getElementById("gemini-key-text").textContent = key || "(nessuna chiave Gemini salvata — aggiungila nella schermata iniziale o dal footer)";
+    div.style.display = "block";
+    btn.innerHTML = '<i class="ti ti-eye-off" aria-hidden="true"></i> Nascondi chiave';
+  } else {
+    div.style.display = "none";
+    btn.innerHTML = '<i class="ti ti-key" aria-hidden="true"></i> Mostra chiave Gemini';
+  }
+}
 
 // ═══════════════════════════════════════════════════════════════════════════
 function init() {
