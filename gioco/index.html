@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trattoria della Stella — Challenge</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <style>
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Bold.otf") format("opentype");font-weight:700;font-display:swap}
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-SemiBold.otf") format("opentype");font-weight:600;font-display:swap}
@@ -22,6 +23,13 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
 .btn{font-family:"Poppins";font-weight:600;font-size:15px;padding:14px 26px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:9px;text-decoration:none;transition:background .15s}
 .btn:hover{background:var(--accent-dark)}
 .btn i{font-size:19px}
+.btn.ghost{background:transparent;color:var(--accent);border-color:var(--accent)}
+.btn.ghost:hover{background:rgba(176,73,45,.08)}
+.btn:disabled{opacity:.6;cursor:default}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.zip-note{font-size:12.5px;color:var(--muted);margin-top:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;animation:spin .8s linear infinite}
 .sec-head{font-family:"Oddval Text";font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:38px 0 14px;display:flex;align-items:center;gap:9px}
 .sec-head i{color:var(--accent);font-size:18px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;margin-bottom:8px}
@@ -45,7 +53,11 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
     <div class="kick">La sfida · Trattoria di Testaccio · Showcase Unicredit</div>
     <h1>Da trattoria in crisi<br>a rilancio sostenibile</h1>
     <p class="sub">Quattro fasi per rimettere in piedi una trattoria romana sull'orlo del baratro: salva i conti, rilancia il locale, e scopri chi sta sabotando dall'interno. Avvia il gioco e tieni a portata di mano i materiali qui sotto.</p>
-    <a class="btn" href="restaurant_game.html"><i class="ti ti-player-play"></i> Avvia il gioco</a>
+    <div class="cta-row">
+      <a class="btn" href="restaurant_game.html"><i class="ti ti-player-play"></i> Avvia il gioco</a>
+      <button class="btn ghost" id="zip-btn" onclick="scaricaTuttoZip(this)"><i class="ti ti-file-zip"></i> Scarica tutti i materiali (ZIP)</button>
+    </div>
+    <div class="zip-note">Un unico archivio con tutti i file delle tre fasi, già divisi in cartelle. Oppure scarica i singoli file qui sotto.</div>
   </div>
 
   <div class="sec-head"><i class="ti ti-folder"></i> Materiali da scaricare</div>
@@ -103,5 +115,42 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
   <div class="foot">Showcase Unicredit — Datapizza, giugno 2026. Per giocare serve la connessione a internet (icone e assistente AI).</div>
 
 </div>
+
+<script>
+// Impacchetta in un unico ZIP tutti i materiali elencati come <a class="mat" download>,
+// preservando la struttura delle cartelle (fase1.../fase2.../fase3...).
+async function scaricaTuttoZip(btn) {
+  if (typeof JSZip === "undefined") { alert("Libreria ZIP non caricata: controlla la connessione e riprova."); return; }
+  const links = Array.from(document.querySelectorAll("a.mat[href][download]"));
+  const paths = [...new Set(links.map(a => a.getAttribute("href")))];
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  let done = 0, falliti = [];
+  const setLabel = () => { btn.innerHTML = `<i class="ti ti-loader-2 spin"></i> Preparazione… ${done}/${paths.length}`; };
+  setLabel();
+  try {
+    const zip = new JSZip();
+    for (const path of paths) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        zip.file(path, await res.blob());
+      } catch(e) { falliti.push(path); }
+      done++; setLabel();
+    }
+    btn.innerHTML = `<i class="ti ti-loader-2 spin"></i> Compressione…`;
+    const blob = await zip.generateAsync({ type:"blob" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "trattoria_della_stella_materiali.zip";
+    a.click(); URL.revokeObjectURL(a.href);
+    if (falliti.length) alert("Archivio creato, ma alcuni file non sono stati trovati:\n" + falliti.join("\n"));
+  } catch(e) {
+    alert("Errore durante la creazione dello ZIP: " + (e?.message || e));
+  } finally {
+    btn.disabled = false; btn.innerHTML = orig;
+  }
+}
+</script>
 </body>
 </html>

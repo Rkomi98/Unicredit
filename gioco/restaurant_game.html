@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Da trattoria in crisi a rilancio sostenibile</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <style>
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Regular.otf") format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Medium.otf") format("opentype");font-weight:500;font-display:swap}
@@ -326,7 +325,6 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
         <input type="password" id="api-key-gemini-title" class="api-title-input" placeholder="Gemini — AIza..." autocomplete="off">
       </div>
       <div style="height:22px"></div>
-      <button class="btn ghost full" onclick="scaricaZip(this)" style="margin-bottom:10px"><i class="ti ti-download" aria-hidden="true"></i> Scarica il gioco (ZIP)</button>
       <button class="btn primary big full" onclick="startGame()">Entra in cucina <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
       <div class="title-foot">Il nome si può cambiare solo qui, prima di iniziare.</div>
     </div>
@@ -2141,34 +2139,6 @@ function appendMsg(tipo, testo) {
   return el;
 }
 function scrollChat(){ const box = document.getElementById("chat-box"); if(box) box.scrollTop = box.scrollHeight; }
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  SCARICA ZIP
-// ═══════════════════════════════════════════════════════════════════════════
-async function scaricaZip(btn) {
-  if (typeof JSZip === "undefined") { alert("Libreria ZIP non caricata — controlla la connessione e riprova."); return; }
-  btnBusy(btn, "Preparazione ZIP…");
-  try {
-    const zip = new JSZip();
-    zip.file("restaurant_game.html", "<!DOCTYPE html>\n" + document.documentElement.outerHTML);
-    const fonti = zip.folder("fonts");
-    const fontPaths = [
-      "fonts/OddvalText-Regular.otf","fonts/OddvalText-Medium.otf",
-      "fonts/OddvalText-SemiBold.otf","fonts/OddvalText-Bold.otf","fonts/OddvalText-Black.otf",
-      "fonts/Poppins-Regular.ttf","fonts/Poppins-Medium.ttf",
-      "fonts/Poppins-SemiBold.ttf","fonts/Poppins-Bold.ttf"
-    ];
-    await Promise.all(fontPaths.map(async path => {
-      try { const res = await fetch(path); if (res.ok) fonti.file(path.replace("fonts/",""), await res.blob()); } catch(_){}
-    }));
-    const blob = await zip.generateAsync({ type:"blob", compression:"STORE" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "trattoria_della_stella.zip";
-    a.click(); URL.revokeObjectURL(a.href);
-  } catch(e) { alert("Errore ZIP: " + (e?.message || e)); }
-  btnRestore(btn);
-}
 
 // ═══════════════════════════════════════════════════════════════════════════
 //  GEMINI KEY REVEAL (Fase 3)
