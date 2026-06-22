@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Da trattoria in crisi a rilancio sostenibile</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
 <style>
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Regular.otf") format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Medium.otf") format("opentype");font-weight:500;font-display:swap}
@@ -536,7 +536,7 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
       <span class="switch on" id="warming-switch"></span> Atmosfera che si scalda a ogni fase
     </div>
     <div class="warming-toggle" onclick="toggleTestingCooldown()">
-      <span class="switch" id="cooldown-switch"></span> Disabilita attesa di 15 min (testing)
+      <span class="switch" id="cooldown-switch"></span> Disabilita attesa di studio (testing)
     </div>
     <button class="btn ghost" onclick="testChefQuit()"><i class="ti ti-user-x" aria-hidden="true"></i> Test: chef si licenzia (Fase 2)</button>
     <div class="api-status" id="api-status"></div>
@@ -663,10 +663,13 @@ const MODEL = (function(){
 // ═══════════════════════════════════════════════════════════════════════════
 //  COSTANTI DI GIOCO
 // ═══════════════════════════════════════════════════════════════════════════
-const PASS = "stella2024";
+// Password facilitatore — una per ogni gate (riveli quella giusta al momento giusto per scandire i tempi)
+const PASS_GATE = { 2: "Un!credit01", 3: "D4t4p1zz4" }; // ingresso a Fase 2 / Fase 3
+const PASS_FINALE = "OhNo!";                            // riepilogo finale
+const PASS_RESET  = "ResetStella!";                     // reset partita (admin)
 const MAX_TENTATIVI = 3;
-const COOLDOWN_MS = 15*60*1000;
-const CHEF_QUIT_MS = 10*60*1000;
+const COOLDOWN_MS = { 1: 8*60*1000, 2: 5*60*1000 };     // lock "studio con Claude" per fase
+const CHEF_QUIT_MS = 7*60*1000;
 const TUT_BUDGET = 20000;
 const F2_LIQUIDITA = 22290;
 const F2_FIDO = 8500;
@@ -709,7 +712,7 @@ const DIPENDENTI = [
   {nome:"Silvia Moretti", ruolo:"cameriera"},
   {nome:"Marco Stella", ruolo:"gestore"},
   {nome:"Giulia De Santis", ruolo:"cameriera part-time"},
-  {nome:"Bruno Sanna", ruolo:"chef"},
+  {nome:"Lorenzo Pace", ruolo:"chef"},
   {nome:"Diego Ferri", ruolo:"aiuto cuoco"},
   {nome:"Elisa Marini", ruolo:"responsabile di sala"},
   {nome:"Pietro Lombardi", ruolo:"magazziniere/tuttofare"},
@@ -784,7 +787,8 @@ function phaseCooldownRemaining(fase){
   if (isReadonly(fase)) return 0;
   const t = state.phaseArrival && state.phaseArrival[fase];
   if (!t) return 0;
-  return Math.max(0, COOLDOWN_MS - (Date.now() - t));
+  const ms = COOLDOWN_MS[fase] || 0;
+  return Math.max(0, ms - (Date.now() - t));
 }
 function renderCooldown(fase){
   const note = document.getElementById(`cooldown-f${fase}`);
@@ -1379,13 +1383,13 @@ function openAdvance(fase) {
       <div id="modal-pass-err" class="pw-err" style="display:none">Password errata</div>
     </div>
     <button class="btn primary full" onclick="confirmAdvance(${fase})">Avanza alla Fase ${next} <i class="ti ti-arrow-right"></i></button>
-    <div class="mini-note">Password mockup: <strong>stella2024</strong></div>
   `);
   setTimeout(()=>{ const p=document.getElementById("modal-pass"); if(p) p.focus(); }, 90);
 }
 function confirmAdvance(fase) {
   const p = document.getElementById("modal-pass");
-  if (!p || p.value !== PASS) { const e=document.getElementById("modal-pass-err"); if(e) e.style.display="block"; return; }
+  const expected = fase === 3 ? PASS_FINALE : PASS_GATE[fase + 1];
+  if (!p || p.value !== expected) { const e=document.getElementById("modal-pass-err"); if(e) e.style.display="block"; return; }
   // A7 — precarica gli slider della fase nuova con i valori scelti
   if (fase === 1 && (state.attempts[1]||[]).length === 0) state.params[1] = clampParams(state.params[0]);
   closeModal();
@@ -1416,7 +1420,6 @@ function openAccusaSuccess() {
       <div id="modal-pass-err" class="pw-err" style="display:none">Password errata</div>
     </div>
     <button class="btn primary full" onclick="confirmAdvance(3)">Vai al riepilogo finale <i class="ti ti-trophy"></i></button>
-    <div class="mini-note">Password mockup: <strong>stella2024</strong></div>
   `);
   setTimeout(()=>{ const p=document.getElementById("modal-pass"); if(p) p.focus(); }, 90);
 }
@@ -1434,7 +1437,7 @@ function openAccusaFail(nome) {
 // ═══════════════════════════════════════════════════════════════════════════
 function unlockFase(targetFase) {
   const pass = document.getElementById(`unlock-pass-f${targetFase}`).value;
-  if (pass !== PASS) { document.getElementById(`unlock-f${targetFase}-err`).style.display = "inline"; return; }
+  if (pass !== PASS_GATE[targetFase]) { document.getElementById(`unlock-f${targetFase}-err`).style.display = "inline"; return; }
   document.getElementById(`unlock-f${targetFase}-err`).style.display = "none";
   state.fase = Math.max(state.fase, targetFase);
   recomputeFinancials(); saveState();
@@ -1951,7 +1954,7 @@ function scaricaScheda() {
 function resetWithPassword(inputId, errorId) {
   const input = document.getElementById(inputId);
   const err = document.getElementById(errorId);
-  if (!input || input.value !== PASS) { if (err) err.style.display = "inline"; return; }
+  if (!input || input.value !== PASS_RESET) { if (err) err.style.display = "inline"; return; }
   if (err) err.style.display = "none";
   localStorage.removeItem("ristorante_v5");
   state = defaultState();

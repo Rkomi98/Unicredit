@@ -10,7 +10,7 @@ Testo:
 
 - Sara: "Giu scusa l'ora, posso chiederti una cosa al volo?"
 - Giulia: "Dimmi"
-- Sara: "Ti rientrano quei 200 che mi avevi detto? Anche meno, giuro che te li ridò il 27."
+- Sara: "Per caso hai quei 200 che mi avevi detto? Anche meno, giuro che te li ridò il 27."
 - Giulia: "Questo mese non riesco, mi spiace. Tutto ok?"
 - Sara: "Sì sì. Solo affitto e rata che si sono messi d'accordo per arrivare insieme."
 - Giulia: "Domani fai chiusura?"
@@ -34,17 +34,17 @@ Testo:
 
 Informazione utile: Elisa e' associata alla chiusura del giovedi, al registro, alle chiavi del retro e all'auto. La conversazione resta operativa, non accusatoria.
 
-## gruppo_stella_cucina_sala.png
+## cucina_sala.png
 
 Tipo: gruppo staff. Nome visibile in alto: **Stella - cucina/sala**.
 
 Testo:
 
-- Diego: "Scusate, ieri sera ho ricontato il rosso della mensola bassa e non mi torna."
+- Diego: "Scusate, ieri sera ho ricontato le botttglie di vino rosso della mensola bassa e non mi torna."
 - Pietro: "Non spostate cartoni senza segnarlo, altrimenti poi sembra che manchi roba."
 - Matteo: "Io ho preso solo due bottiglie per la sala grande, segnate sul foglio."
-- Elisa: "Evitiamo processi sul gruppo. Domani controllo io con Pietro."
-- Diego: "Ok, ma non è la prima volta. Anche le posate da sala erano contate diverse."
+- Elisa: "Evitiamo processi sul gruppo. Domani controllo io con Pietro..."
+- Diego: "Ok, ma non è la prima volta! Anche le posate da sala erano contate in modo diverso."
 
 Informazione utile: il magazzino ha anomalie ricorrenti su bottiglie e posate. Nessuno accusa direttamente.
 
@@ -61,7 +61,7 @@ Testo:
 
 Informazione utile: rumore realistico e piccolo depistaggio. Collega Sara al retro solo di giorno e per una ragione innocua.
 
-## gruppo_compleanno_matteo.png
+## compleanno_matteo.png
 
 Tipo: gruppo informale. Nome visibile in alto: **Compleanno Matteo**.
 
@@ -69,7 +69,7 @@ Testo:
 
 - Giulia: "Domenica dopo servizio facciamo una tortina per Matteo?"
 - Marta: "Io porto le candeline, ma niente casino in cucina."
-- Bruno: "Confermo: niente casino in cucina."
+- Lorenzo: "Confermo: niente casino in cucina."
 - Silvia: "Io ci sono dopo le 23. Tenetemi una fetta."
 
 Informazione utile: nessuna. Serve solo a rendere il set meno artificiale.

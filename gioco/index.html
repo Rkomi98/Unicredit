@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trattoria della Stella — Challenge</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+<style>
+@font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-Bold.otf") format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:"Oddval Text";src:url("fonts/OddvalText-SemiBold.otf") format("opentype");font-weight:600;font-display:swap}
+@font-face{font-family:"Poppins";src:url("fonts/Poppins-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("fonts/Poppins-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url("fonts/Poppins-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+:root{--paper:#efe6d3;--card:#faf4e8;--ink:#2c2016;--muted:#86705a;--line:#e3d7c1;--accent:#b0492d;--accent-dark:#8f3a23;--calc-bg:#f3ead9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Poppins",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased;line-height:1.55}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px 60px}
+.hero{padding:8vh 0 28px}
+.kick{font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;letter-spacing:-.02em;margin-bottom:14px}
+.sub{font-size:15.5px;color:var(--muted);max-width:600px;margin-bottom:26px}
+.btn{font-family:"Poppins";font-weight:600;font-size:15px;padding:14px 26px;border-radius:11px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:9px;text-decoration:none;transition:background .15s}
+.btn:hover{background:var(--accent-dark)}
+.btn i{font-size:19px}
+.sec-head{font-family:"Oddval Text";font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:38px 0 14px;display:flex;align-items:center;gap:9px}
+.sec-head i{color:var(--accent);font-size:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;margin-bottom:8px}
+.phase{margin-bottom:30px}
+.phase-title{font-family:"Oddval Text";font-weight:700;font-size:22px;margin-bottom:4px}
+.phase-q{font-size:13.5px;color:var(--muted);font-style:italic;margin-bottom:14px}
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:9px}
+.mat{display:flex;align-items:center;gap:11px;padding:11px 13px;background:var(--card);border:1px solid var(--line);border-radius:11px;text-decoration:none;color:var(--ink);transition:border-color .12s,background .12s}
+.mat:hover{border-color:var(--accent);background:#f4ebdd}
+.mat .ic{width:34px;height:34px;flex:none;border-radius:9px;background:var(--calc-bg);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px}
+.mat .tx{min-width:0}
+.mat .nm{font-weight:600;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mat .ds{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kick">La sfida · Trattoria di Testaccio · Showcase Unicredit</div>
+    <h1>Da trattoria in crisi<br>a rilancio sostenibile</h1>
+    <p class="sub">Quattro fasi per rimettere in piedi una trattoria romana sull'orlo del baratro: salva i conti, rilancia il locale, e scopri chi sta sabotando dall'interno. Avvia il gioco e tieni a portata di mano i materiali qui sotto.</p>
+    <a class="btn" href="restaurant_game.html"><i class="ti ti-player-play"></i> Avvia il gioco</a>
+  </div>
+
+  <div class="sec-head"><i class="ti ti-folder"></i> Materiali da scaricare</div>
+
+  <div class="phase">
+    <div class="phase-title">Fase 1 — Triage</div>
+    <div class="phase-q">Quanto sta davvero male la Trattoria della Stella?</div>
+    <div class="mat-grid">
+      <a class="mat" href="fase1-dati-operativi/cassa.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">cassa.md</div><div class="ds">Liquidità al 2 gennaio 2026</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/costi_fissi.xlsx" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">costi_fissi.xlsx</div><div class="ds">Affitti, utenze, rate</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/costi_ingredienti.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">costi_ingredienti.csv</div><div class="ds">Prezzi di acquisto</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/acquisti_magazzino.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">acquisti_magazzino.csv</div><div class="ds">Storico ordini fornitori</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/menu.xlsx" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">menu.xlsx</div><div class="ds">Piatti, prezzi, food cost</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/personale.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">personale.csv</div><div class="ds">Organico e costo mensile</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/scontrini.sqlite" download><span class="ic"><i class="ti ti-database"></i></span><span class="tx"><div class="nm">scontrini.sqlite</div><div class="ds">DB scontrini 12 mesi</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/fornitori.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">fornitori.md</div><div class="ds">Note sui fornitori</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/marketing.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">marketing.md</div><div class="ds">Presenza online 2022–2025</div></span></a>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-title">Fase 2 — Rilancio</div>
+    <div class="phase-q">C'è un futuro per questo locale? Quale?</div>
+    <div class="mat-grid">
+      <a class="mat" href="fase2-contesto-mercato/recensioni.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">recensioni.csv</div><div class="ds">Google e TheFork, 18 mesi</div></span></a>
+      <a class="mat" href="fase2-contesto-mercato/feedback_personale.txt" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">feedback_personale.txt</div><div class="ds">Commenti anonimi staff</div></span></a>
+      <a class="mat" href="fase2-contesto-mercato/report_quartiere.pdf" download><span class="ic"><i class="ti ti-file-type-pdf"></i></span><span class="tx"><div class="nm">report_quartiere.pdf</div><div class="ds">Report demografico zona</div></span></a>
+      <a class="mat" href="fase2-contesto-mercato/trend_ristorazione.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">trend_ristorazione.md</div><div class="ds">Cinque trend del 2026</div></span></a>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-title">Fase 3 — Il sabotatore</div>
+    <div class="phase-q">Qualcuno sta sabotando il locale dall'interno. Chi?</div>
+    <div class="mat-grid">
+      <a class="mat" href="fase3-indagine/dipendenti.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">dipendenti.csv</div><div class="ds">Anagrafica e turni</div></span></a>
+      <a class="mat" href="fase3-indagine/ordini_fornitori.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">ordini_fornitori.csv</div><div class="ds">Ordini recenti</div></span></a>
+      <a class="mat" href="fase3-indagine/registro_cassa.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">registro_cassa.csv</div><div class="ds">Movimenti cassa giornalieri</div></span></a>
+      <a class="mat" href="fase3-indagine/biglietto_anonimo.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">biglietto_anonimo.png</div><div class="ds">Biglietto trovato in magazzino</div></span></a>
+      <a class="mat" href="fase3-indagine/chat_whatsapp/screen_giulia_sara.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Giulia / Sara</div><div class="ds">Screenshot WhatsApp</div></span></a>
+      <a class="mat" href="fase3-indagine/chat_whatsapp/screen_silvia_elisa.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Silvia / Elisa</div><div class="ds">Screenshot WhatsApp</div></span></a>
+      <a class="mat" href="fase3-indagine/chat_whatsapp/screen_sara_pietro.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Sara / Pietro</div><div class="ds">Screenshot WhatsApp</div></span></a>
+      <a class="mat" href="fase3-indagine/chat_whatsapp/cucina_sala.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">gruppo — cucina/sala</div><div class="ds">Chat di gruppo staff</div></span></a>
+      <a class="mat" href="fase3-indagine/chat_whatsapp/compleanno_matteo.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">gruppo — compleanno Matteo</div><div class="ds">Chat di gruppo informale</div></span></a>
+      <a class="mat" href="fase3-indagine/foto_magazzino/scaffale_vini_mancanti.jpg" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — scaffale vini</div><div class="ds">Bottiglie mancanti</div></span></a>
+      <a class="mat" href="fase3-indagine/foto_magazzino/cassa_fornitore_non_in_lista.jpg" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — cassa fornitore</div><div class="ds">Fornitore non in lista</div></span></a>
+      <a class="mat" href="fase3-indagine/foto_magazzino/cassetto_posate_vuoti.jpg" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — cassetto posate</div><div class="ds">Vuoti anomali</div></span></a>
+      <a class="mat" href="fase3-indagine/foto_magazzino/retro_notte_auto_giovedi.jpg" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — retro di notte</div><div class="ds">Auto nel vicolo, giovedì</div></span></a>
+      <a class="mat" href="fase3-indagine/vocali/vocale_sara.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Sara</div><div class="ds">Messaggio audio</div></span></a>
+      <a class="mat" href="fase3-indagine/vocali/vocale_giulia.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Giulia</div><div class="ds">Messaggio audio</div></span></a>
+      <a class="mat" href="fase3-indagine/vocali/vocale_elisa.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Elisa</div><div class="ds">Messaggio audio</div></span></a>
+    </div>
+  </div>
+
+  <div class="foot">Showcase Unicredit — Datapizza, giugno 2026. Per giocare serve la connessione a internet (icone e assistente AI).</div>
+
+</div>
+</body>
+</html>

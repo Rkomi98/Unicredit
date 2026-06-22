@@ -1,10 +1,10 @@
 nome,ruolo,data_assunzione,turni,accesso_cassa,accesso_magazzino
 Elisa Marini,responsabile di sala,2021-04-01,Mar-Sab cena; chiude il giovedi,si,"si (occasionale, fine turno)"
-Sara Bianchi,cameriera,2022-09-12,Mar-Ven pranzo; Sab-Dom misto; raramente chiude,si (limitato),no
-Silvia Moretti,cameriera,2023-11-20,turni misti; riceve consegne; chiude a volte,si,"si (di giorno, consegne)"
+Sara Bianchi,cameriera,2023-08-15,Mar-Ven pranzo; Sab-Dom misto; raramente chiude,si (limitato),no
+Silvia Moretti,cameriera,2024-01-15,turni misti; riceve consegne; chiude a volte,si,"si (di giorno, consegne)"
 Marco Stella,gestore,2023-07-01,variabile; controlli amministrativi,si,si
 Giulia De Santis,cameriera part-time,2024-05-01,Ven-Dom sera; non chiude,no,no
-Bruno Sanna,chef,2025-09-15,Mar-Sab cucina cena,no,si
+Lorenzo Pace,chef,2024-02-01,Mar-Sab cucina cena,no,si
 Diego Ferri,aiuto cuoco,2023-03-01,Mar-Dom cucina,no,si
 Ahmed Nait,lavapiatti,2024-01-10,Mar-Dom sera,no,no
 Pietro Lombardi,magazziniere/tuttofare,2022-06-01,Mar-Sab mattina,no,si

@@ -14,9 +14,33 @@ I partecipanti vestono i panni di consulenti ingaggiati per analizzare la situaz
 
 ## Come si gioca
 
-Il file `restaurant_game.html` contiene l'intera interfaccia di gioco, **completamente self-contained**: basta aprirlo nel browser, non richiede server né connessione.
+Il file `restaurant_game.html` contiene l'intera interfaccia di gioco: basta aprirlo nel browser, non serve installare nulla né avviare un server. **Serve però la connessione a internet** per due cose: le icone (caricate da CDN) e l'assistente AI — il testimone della Fase 3 e i commenti del consulente (richiedono una chiave Claude o Gemini). I font del corpo (Poppins) sono inclusi in `fonts/`; i font brand Oddval vanno aggiunti lì (vedi `fonts/README.md`), altrimenti si usa un fallback pulito.
 
-Le tre fasi si sbloccano progressivamente. Il facilitatore gestisce le password di avanzamento e può abilitare il **testimone AI** (richiede una chiave Claude o Gemini) per la Fase 3.
+Le tre fasi si sbloccano progressivamente con le **password del facilitatore** (vedi sotto), che sono anche la leva per scandire i tempi della giornata.
+
+## Password facilitatore (una per gate)
+
+Riveli ogni password al momento giusto per controllare il ritmo:
+
+| Gate | Password |
+|---|---|
+| Sblocca **Fase 2 — Rilancio** | `Un!credit01` |
+| Sblocca **Fase 3 — Il sabotatore** | `D4t4p1zz4` |
+| Riepilogo finale (dopo l'accusa) | `OhNo!` |
+| Reset partita (tra un gruppo e l'altro) | `ResetStella!` |
+
+## Tempi (challenge da 1h30)
+
+| Blocco | Durata |
+|---|---|
+| Apertura + scenario + setup | ~8 min |
+| Tutorial (demo guidata) | ~4 min |
+| **Fase 1 — Triage** | ~20 min (i primi **8 min** sono di sola analisi con Claude, poi si simula) |
+| **Fase 2 — Rilancio** | ~16 min (lock di **5 min**; a ~7 min lo **chef si licenzia** a sorpresa) |
+| **Fase 3 — Indagine** | ~10 min (il cronometro penalizza il tempo) |
+| Speech / pitch dei migliori + giuria | ~22 min |
+
+Dettagli operativi completi in `GUIDA_FACILITATORE.md`.
 
 ---
 
