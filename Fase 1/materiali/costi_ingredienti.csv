@@ -1,0 +1,54 @@
+piatto,ingrediente,fornitore,costo_unitario,unita,qta_per_porzione
+Cacio e pepe,tonnarelli,Pastificio Testaccio,2.2,kg,0.13
+Cacio e pepe,pecorino romano,Caseificio Sabelli,13.5,kg,0.1
+Cacio e pepe,pepe nero,Dispensa Roma,26.0,kg,0.004
+Carbonara,spaghetti,Pastificio Testaccio,2.0,kg,0.13
+Carbonara,guanciale,Salumi Franchi,16.0,kg,0.07
+Carbonara,uova,Uova Tiburtina,0.28,pz,1.2
+Carbonara,pecorino romano,Caseificio Sabelli,13.5,kg,0.08
+Amatriciana,bucatini,Pastificio Testaccio,2.1,kg,0.13
+Amatriciana,guanciale,Salumi Franchi,16.0,kg,0.06
+Amatriciana,pomodoro pelato,Dispensa Roma,2.6,kg,0.18
+Gricia,rigatoni,Pastificio Testaccio,2.0,kg,0.13
+Gricia,guanciale,Salumi Franchi,16.0,kg,0.075
+Gricia,pecorino romano,Caseificio Sabelli,13.5,kg,0.08
+Suppli,riso,Dispensa Roma,2.4,kg,0.08
+Suppli,mozzarella,Caseificio Sabelli,8.8,kg,0.045
+Suppli,pomodoro pelato,Dispensa Roma,2.6,kg,0.08
+Tagliata di fassona,fassona piemontese,Macelleria Brunetti,37.0,kg,0.24
+Tagliata di fassona,rucola,Ortofrutta Conti,6.0,kg,0.04
+Tagliata di fassona,scaglie di grana,Caseificio Sabelli,15.0,kg,0.03
+Filetto al pepe verde,filetto bovino,Macelleria Brunetti,41.0,kg,0.22
+Filetto al pepe verde,panna,Caseificio Sabelli,4.0,l,0.05
+Filetto al pepe verde,pepe verde,Dispensa Roma,18.0,kg,0.01
+Risotto ai porcini,riso carnaroli,Dispensa Roma,4.0,kg,0.1
+Risotto ai porcini,porcini,Ortofrutta Conti,25.0,kg,0.16
+Risotto ai porcini,burro,Caseificio Sabelli,9.0,kg,0.03
+Tartare di manzo,fassona piemontese,Macelleria Brunetti,37.0,kg,0.16
+Saltimbocca alla romana,vitella,Macelleria Brunetti,22.0,kg,0.16
+Saltimbocca alla romana,prosciutto crudo,Salumi Franchi,22.0,kg,0.04
+Polpette al sugo,macinato misto,Carni Sud,10.5,kg,0.16
+Polpette al sugo,pomodoro pelato,Dispensa Roma,2.6,kg,0.16
+Cicoria ripassata,cicoria,Ortofrutta Conti,3.8,kg,0.2
+Patate al forno,patate,MercatoGen,1.4,kg,0.25
+Tiramisu,mascarpone,Caseificio Sabelli,7.5,kg,0.08
+Tiramisu,caffe,Torrefazione Ostiense,18.0,kg,0.01
+Crostata di visciole,visciole,Forno e Frutta Roma,8.0,kg,0.06
+Tonnarelli cacio e pepe al tartufo,tonnarelli,Pastificio Testaccio,2.2,kg,0.13
+Tonnarelli cacio e pepe al tartufo,pecorino romano,Caseificio Sabelli,13.5,kg,0.11
+Tonnarelli cacio e pepe al tartufo,pepe nero,Dispensa Roma,26.0,kg,0.004
+Tonnarelli cacio e pepe al tartufo,burro,Caseificio Sabelli,9.0,kg,0.035
+Tonnarelli cacio e pepe al tartufo,tartufo estivo,Ortofrutta Conti,140.0,kg,0.02
+Carciofo alla romana,carciofi romaneschi,Ortofrutta Conti,0.75,pz,2
+Carciofo alla romana,mentuccia e prezzemolo,Ortofrutta Conti,18.0,kg,0.01
+Carciofo alla romana,olio extravergine,Dispensa Roma,8.5,l,0.035
+Carciofo alla romana,limone,Ortofrutta Conti,2.2,kg,0.04
+Fiori di zucca,fiori di zucca,Ortofrutta Conti,0.6,pz,2
+Fiori di zucca,mozzarella,Caseificio Sabelli,8.8,kg,0.06
+Fiori di zucca,alici,Dispensa Roma,18.0,kg,0.02
+Fiori di zucca,pastella,Dispensa Roma,2.8,kg,0.08
+Fiori di zucca,olio frittura,Dispensa Roma,3.2,l,0.12
+Cheesecake ricotta e visciole,ricotta,Caseificio Sabelli,6.5,kg,0.11
+Cheesecake ricotta e visciole,biscotti secchi,Dispensa Roma,4.0,kg,0.05
+Cheesecake ricotta e visciole,burro,Caseificio Sabelli,9.0,kg,0.035
+Cheesecake ricotta e visciole,visciole,Forno e Frutta Roma,8.0,kg,0.07

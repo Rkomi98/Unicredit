@@ -1,0 +1,71 @@
+data,voto,testo,fonte,nome_utente
+2022-01-19,5,"Carbonara strepitosa, atmosfera di famiglia e prezzi onesti. Renato passa tra i tavoli e ti fa sentire a casa.",Google,Marco77
+2022-01-27,5,"Cacio e pepe come deve essere: semplice, cremosa, romana. Conto giusto e servizio sorridente.",TheFork,Lucia R.
+2022-03-02,4,"Trattoria vera a Testaccio. Menu tradizionale, porzioni generose, niente effetti speciali.",Google,andrea_testaccio
+2022-03-21,5,"Sono tornato con colleghi a pranzo: veloce, buono, prezzo corretto. La gricia resta la mia preferita.",TheFork,ValeFood
+2022-04-08,4,"Locale senza fronzoli ma autentico. Ottima amatriciana, vino della casa e conto leggero.",TripAdvisor,StefanoP
+2022-04-27,5,"Nonno Renato in sala e cucina romana di sostanza. Sembra un posto di quartiere, nel senso migliore.",TripAdvisor,Giulia M.
+2022-05-05,1,"Non ho trovato parcheggio, quindi una stella.",Google,Roberto
+2022-05-18,5,Prezzi ancora umani per la zona. Carbonara e saltimbocca da applausi.,Google,Martina
+2022-06-12,4,"A pranzo funziona bene: piatti rapidi, tavoli pieni ma servizio ordinato.",TripAdvisor,Claudio
+2022-07-02,5,Una certezza prima del cinema. Porzioni abbondanti e sapori romani veri.,TripAdvisor,SaraRoma
+2022-07-30,5,"Carbonara strepitosa, atmosfera di famiglia e prezzi onesti. Renato passa tra i tavoli e ti fa sentire a casa.",TripAdvisor,Marco77
+2022-08-06,5,"Cacio e pepe come deve essere: semplice, cremosa, romana. Conto giusto e servizio sorridente.",TripAdvisor,Lucia R.
+2022-08-25,4,"Trattoria vera a Testaccio. Menu tradizionale, porzioni generose, niente effetti speciali.",TripAdvisor,andrea_testaccio
+2022-09-18,5,"Sono tornato con colleghi a pranzo: veloce, buono, prezzo corretto. La gricia resta la mia preferita.",TripAdvisor,ValeFood
+2022-09-25,4,"Locale senza fronzoli ma autentico. Ottima amatriciana, vino della casa e conto leggero.",TripAdvisor,StefanoP
+2022-10-23,5,"Nonno Renato in sala e cucina romana di sostanza. Sembra un posto di quartiere, nel senso migliore.",TheFork,Giulia M.
+2022-11-13,4,"Buona cena in famiglia, personale gentile e piatti classici. La trippa era speciale.",Google,Roberto
+2022-11-29,5,Prezzi ancora umani per la zona. Carbonara e saltimbocca da applausi.,Google,Martina
+2022-12-14,1,"Non ho trovato parcheggio, quindi una stella.",TripAdvisor,Claudio
+2022-12-27,5,Una certezza prima del cinema. Porzioni abbondanti e sapori romani veri.,TheFork,SaraRoma
+2023-01-13,5,"Carbonara strepitosa, atmosfera di famiglia e prezzi onesti. Renato passa tra i tavoli e ti fa sentire a casa.",TripAdvisor,Marco77
+2023-02-18,5,"Cacio e pepe come deve essere: semplice, cremosa, romana. Conto giusto e servizio sorridente.",TripAdvisor,Lucia R.
+2023-03-03,4,"Trattoria vera a Testaccio. Menu tradizionale, porzioni generose, niente effetti speciali.",TheFork,andrea_testaccio
+2023-03-24,5,"Sono tornato con colleghi a pranzo: veloce, buono, prezzo corretto. La gricia resta la mia preferita.",Google,ValeFood
+2023-04-12,4,"Locale senza fronzoli ma autentico. Ottima amatriciana, vino della casa e conto leggero.",TripAdvisor,StefanoP
+2023-04-26,5,"Nonno Renato in sala e cucina romana di sostanza. Sembra un posto di quartiere, nel senso migliore.",TheFork,Giulia M.
+2023-05-14,4,"Buona cena in famiglia, personale gentile e piatti classici. La trippa era speciale.",Google,Roberto
+2023-05-25,5,Prezzi ancora umani per la zona. Carbonara e saltimbocca da applausi.,TheFork,Martina
+2023-06-14,4,"A pranzo funziona bene: piatti rapidi, tavoli pieni ma servizio ordinato.",TheFork,Claudio
+2023-07-15,5,Una certezza prima del cinema. Porzioni abbondanti e sapori romani veri.,TripAdvisor,SaraRoma
+2023-09-10,2,Tornata dopo un anno: prezzi quasi raddoppiati e porzioni piu' piccole. Non e' piu' la trattoria di una volta.,TheFork,ValeFood
+2023-09-27,3,"La Tagliata e' buona, ma il conto ormai sembra da centro storico. Servizio lento.",Google,StefanoP
+2023-10-19,2,"Sala nuova fredda e anonima, con molti tavoli vuoti. Peccato, prima aveva piu' anima.",TripAdvisor,Giulia M.
+2023-11-12,3,Piatti curati ma troppo cari per un pranzo feriale. Ho aspettato venti minuti per ordinare.,TheFork,Roberto
+2023-12-04,2,Personale gentile ma disorganizzato. Ogni volta camerieri diversi e nessuno sa bene cosa succede.,TheFork,Martina
+2024-01-02,4,"Serata piacevole, tagliata ottima e vino buono. Prezzi alti ma almeno di sera l'atmosfera regge.",TripAdvisor,Claudio
+2024-01-30,3,"Mia figlia vegetariana ha trovato pochissime opzioni. Le verdure c'erano, ma niente di pensato.",Google,SaraRoma
+2024-02-21,2,"Prenotazione solo per telefono, impossibile capire disponibilita'. Nel 2025 e' assurdo.",TheFork,Marco77
+2024-03-03,1,"Non ho trovato parcheggio, quindi una stella.",TheFork,Lucia R.
+2024-03-28,2,A pranzo eravamo in pochi e il servizio e' stato comunque lento. Prezzo troppo alto.,TripAdvisor,andrea_testaccio
+2024-04-17,4,"Quando e' pieno la sera funziona: musica bassa, piatti buoni, pubblico giovane. Da sistemare il servizio.",TripAdvisor,ValeFood
+2024-05-17,3,"Menu confuso: un po' trattoria, un po' gourmet. Non capisco cosa voglia essere.",TheFork,StefanoP
+2024-05-29,2,"Ho rimpianto la vecchia pajata. Ora piatti piu' moderni, conto piu' pesante, meno calore.",Google,Giulia M.
+2024-06-18,3,"Buona materia prima, ma zero opzioni plant-based interessanti. Solo contorni.",Google,Roberto
+2024-07-11,2,"La sala nuova e' gelida, luci bianche e tavoli troppo distanti. Non invoglia a restare.",TheFork,Martina
+2024-07-29,4,Aperitivo improvvisato ma carino: se lo facessero bene potrebbe funzionare.,TripAdvisor,Claudio
+2024-08-22,2,Tornata dopo un anno: prezzi quasi raddoppiati e porzioni piu' piccole. Non e' piu' la trattoria di una volta.,Google,SaraRoma
+2024-09-15,3,"La Tagliata e' buona, ma il conto ormai sembra da centro storico. Servizio lento.",Google,Marco77
+2024-10-06,2,"Sala nuova fredda e anonima, con molti tavoli vuoti. Peccato, prima aveva piu' anima.",Google,Lucia R.
+2024-10-26,3,Piatti curati ma troppo cari per un pranzo feriale. Ho aspettato venti minuti per ordinare.,Google,andrea_testaccio
+2024-11-24,2,Personale gentile ma disorganizzato. Ogni volta camerieri diversi e nessuno sa bene cosa succede.,TripAdvisor,ValeFood
+2024-12-16,4,"Serata piacevole, tagliata ottima e vino buono. Prezzi alti ma almeno di sera l'atmosfera regge.",TheFork,StefanoP
+2025-01-05,3,"Mia figlia vegetariana ha trovato pochissime opzioni. Le verdure c'erano, ma niente di pensato.",TripAdvisor,Giulia M.
+2025-02-04,4,"Buono il pane, il resto nella norma.",Google,Roberto
+2025-02-17,3,"La carbonara resta buona, pero' la sala nuova sembra un salone per eventi spento.",TripAdvisor,Martina
+2025-03-18,2,A pranzo eravamo in pochi e il servizio e' stato comunque lento. Prezzo troppo alto.,TheFork,Claudio
+2025-03-30,4,"Quando e' pieno la sera funziona: musica bassa, piatti buoni, pubblico giovane. Da sistemare il servizio.",Google,SaraRoma
+2025-04-28,3,"Menu confuso: un po' trattoria, un po' gourmet. Non capisco cosa voglia essere.",TheFork,Marco77
+2025-05-16,2,"Ho rimpianto la vecchia pajata. Ora piatti piu' moderni, conto piu' pesante, meno calore.",TripAdvisor,Lucia R.
+2025-06-16,3,"Buona materia prima, ma zero opzioni plant-based interessanti. Solo contorni.",Google,andrea_testaccio
+2025-07-09,2,"La sala nuova e' gelida, luci bianche e tavoli troppo distanti. Non invoglia a restare.",TripAdvisor,ValeFood
+2025-07-13,4,Aperitivo improvvisato ma carino: se lo facessero bene potrebbe funzionare.,TheFork,StefanoP
+2025-08-21,2,Tornata dopo un anno: prezzi quasi raddoppiati e porzioni piu' piccole. Non e' piu' la trattoria di una volta.,Google,Giulia M.
+2025-08-31,3,"La Tagliata e' buona, ma il conto ormai sembra da centro storico. Servizio lento.",Google,Roberto
+2025-10-04,2,"Sala nuova fredda e anonima, con molti tavoli vuoti. Peccato, prima aveva piu' anima.",Google,Martina
+2025-10-19,5,Ci ho portato mia suocera e non ha protestato. Evento raro.,TheFork,Claudio
+2025-11-09,2,Personale gentile ma disorganizzato. Ogni volta camerieri diversi e nessuno sa bene cosa succede.,Google,SaraRoma
+2025-12-09,4,"Serata piacevole, tagliata ottima e vino buono. Prezzi alti ma almeno di sera l'atmosfera regge.",TheFork,Marco77
+2025-12-14,3,"Mia figlia vegetariana ha trovato pochissime opzioni. Le verdure c'erano, ma niente di pensato.",TheFork,Lucia R.
+2026-01-13,2,"Prenotazione solo per telefono, impossibile capire disponibilita'. Nel 2025 e' assurdo.",TripAdvisor,andrea_testaccio

@@ -1,0 +1,19 @@
+nome,ruolo,tipo_contratto,costo_mensile_lordo,turni_settimanali,data_assunzione,data_cessazione
+Renato Stella,gestore,familiare,3200,6,1998-03-01,2023-06-30
+Marco Stella,gestore,familiare,2300,6,2023-07-01,
+Gennaro Russo,chef,tempo indeterminato,3800,5,2014-05-01,2023-07-31
+Lorenzo Pace,chef,tempo indeterminato,3600,5,2024-02-01,
+Marta De Santis,aiuto cuoco,tempo indeterminato,1900,5,2022-02-15,
+Nabil Haddad,aiuto cuoco,tempo determinato,2100,5,2023-09-01,2024-01-31
+Chiara Rinaldi,aiuto cuoco,tempo determinato,2150,4,2024-03-01,2024-09-30
+Roberto Fiore,lavapiatti,part-time,1000,4,2021-11-10,
+Elisa Marini,responsabile di sala,tempo indeterminato,2100,5,2021-04-01,
+Sara Bianchi,cameriere,tempo indeterminato,1650,5,2023-08-15,
+Silvia Moretti,cameriere,tempo determinato,1550,5,2024-01-15,
+Matteo Ricci,cameriere,part-time,950,4,2024-02-01,
+Alessia Neri,cameriere,part-time,850,3,2024-05-01,
+Luca Ferri,aiuto cuoco,part-time,900,3,2025-03-01,
+Omar Khaled,lavapiatti,part-time,700,2,2025-09-01,
+Francesca Leone,cameriere,part-time,1200,4,2020-09-01,2023-12-31
+Paolo Mancini,cassa,part-time,1100,3,2019-06-01,2023-06-30
+Giulia Costa,cameriere,part-time,1050,3,2022-04-01,2023-08-31
