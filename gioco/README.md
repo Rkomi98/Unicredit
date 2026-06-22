@@ -44,6 +44,20 @@ Dettagli operativi completi in `GUIDA_FACILITATORE.md`.
 
 ---
 
+## Obiettivi didattici
+
+Il filo conduttore della giornata: mostrare a un pubblico C-level come l'AI generativa diventi un **collaboratore concreto** su dati e decisioni reali — non un gadget. Ogni sezione allena una competenza diversa.
+
+| Sezione | Obiettivo didattico |
+|---|---|
+| **Tutorial** | Capire il meccanismo base — input → simulazione → risultato — e prendere confidenza con l'idea di lavorare *insieme* a un assistente AI, non da soli. |
+| **Fase 1 — Triage** | Usare l'AI per esplorare e dare senso a dati grezzi ed eterogenei (CSV, Excel, database) e costruire una **diagnosi economica**: dove si perdono i soldi, cosa fermare subito. → *analisi esplorativa dei dati assistita da AI*. |
+| **Fase 2 — Rilancio** | Trasformare segnali qualitativi ed esterni (recensioni, report di quartiere, trend) in una **strategia**, e riadattare le decisioni a un imprevisto (lo chef si licenzia). → *decisione sotto incertezza e sintesi qualitativa con l'AI*. |
+| **Fase 3 — Indagine** | Incrociare fonti **parziali e multimodali** (immagini, audio, chat, tabelle) per arrivare a una conclusione, interrogando un testimone AI e riconoscendo i depistaggi. → *ragionamento multimodale e verifica delle ipotesi*. |
+| **Pitch finale** | Raccontare in modo convincente le scelte fatte e ciò che l'AI ha permesso di scoprire. → *comunicazione data-driven*. |
+
+---
+
 ## Struttura dei materiali
 
 ```
