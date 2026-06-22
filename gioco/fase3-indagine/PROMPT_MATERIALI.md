@@ -75,13 +75,13 @@ Silvia:  Io ci sono dopo le 23. Tenetemi una fetta.
 
 **Strumento consigliato:** image-gen fotorealistico. Formato **orizzontale 1600×1066**, luce da magazzino/retro cucina, stile foto da smartphone (leggermente imperfetta, non da catalogo). Eventuali note a mano devono essere **leggibili**.
 
-### scaffale_vini_mancanti.jpg
+### scaffale_vini_mancanti.png
 > Foto di uno scaffale del magazzino vini, più ripiani. Sul **ripiano basso del vino rosso** alcune posizioni sono **vuote** e segnate a matita come dopo un controllo inventario. In basso un foglietto/nota a mano: **"Nota Pietro: mensola bassa del rosso incompleta rispetto al conteggio."** Realistico, non drammatizzato.
 
-### cassa_fornitore_non_in_lista.jpg
+### cassa_fornitore_non_in_lista.png
 > Area consegne del retro cucina. Diverse casse di fornitori noti con etichette leggibili: **Ortofrutta Conti**, **Dispense de la sora Lella**, **Caseificio Sabelli**. In primo piano, **separata e bordata di rosso**, una cassa con la scritta **"Cantina de Frascati – vino misto – 12 bt"**. Sotto, una nota: **"Cassa trovata nel retro senza bolla allegata. Da ricontrollare con gli ordini."**
 
-### cassetto_posate_vuoti.jpg
+### cassetto_posate_vuoti.png
 > Cassetto portaposate di sala visto dall'alto: alcuni scomparti quasi pieni, altri con **vuoti evidenti**, soprattutto **cucchiai e coltelli**. Piccola didascalia interna: **"vuoti anomali in cucchiai e coltelli da sala"**.
 
 ### retro_notte_auto_giovedi.jpg
@@ -95,7 +95,7 @@ Silvia:  Io ci sono dopo le 23. Tenetemi una fetta.
 
 ---
 
-## 3. Biglietto anonimo — `biglietto_anonimo.png` / `.jpg`
+## 3. Biglietto anonimo — `biglietto_anonimo.png`
 
 **Strumento consigliato:** image-gen. **Versione pulita** (l'attuale ha testo "fantasma" sovrapposto). Formato **1200×860**, sfondo carta avorio leggermente texturizzata, calligrafia a mano **nitida e leggibile**, penna scura, tono concitato ma controllato. **Un solo livello di testo, niente doppioni/ombre di testo.** Testo esatto:
 
@@ -111,7 +111,15 @@ Un dipendente che non ci sta più.
 
 ## 4. Vocali (TTS)
 
-**Strumento consigliato:** TTS realistico in **italiano** con voci distinte (es. ElevenLabs). Durata ~10–15 s, qualità "nota vocale da telefono" (mono, leggera compressione). Leggera cadenza romana, **non caricaturale**. Esporta in **.mp3**.
+**Come si rigenerano:** script pronto `vocali/genera_vocali.mjs` — usa la **Realtime API di OpenAI** (`gpt-realtime`) con la cadenza **romanesca** guidata dal system prompt, una voce distinta per personaggio (Sara=coral, Giulia=shimmer, Elisa=sage). Richiede `OPENAI_API_KEY` nel `.env` di `gioco/`, Node ≥ 22 e `ffmpeg`.
+
+```
+cd gioco/fase3-indagine/vocali
+node genera_vocali.mjs            # genera tutti e 3
+node genera_vocali.mjs sara       # solo uno: sara | giulia | elisa
+```
+
+Come arriva l'accento: la cadenza romana vera non viene dalle sole istruzioni (il modello pronuncia ciò che è scritto), ma dal fatto che ogni personaggio nella mappa `VOCALI` ha due testi — `text` (italiano pulito = pista canonica, uguale a `script_vocali.md`) e `phonetic` (lo stesso testo riscritto in romanesco: "nun", "er/ar/ner/sur", "me/te/se", troncamenti come "chiede/caricà/preoccupà", raddoppiamenti come "robba/gnente"). Lo script dà al modello la versione `phonetic`, così l'accento si sente; il significato e le piste restano identici. Per ritoccare voce, tono o intensità del dialetto basta editare la mappa `VOCALI` in cima al file. Esporta in **.mp3** mono ~10–15 s. I testi (versione pulita):
 
 ### vocale_sara.mp3 — donna ~30 anni, tono **provato/in difficoltà**, voce bassa
 ```

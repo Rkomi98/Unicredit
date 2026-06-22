@@ -2,19 +2,19 @@
 
 Queste descrizioni servono come supporto testuale agli asset visivi. Le foto non devono risolvere il caso da sole: ogni immagine apre una pista da incrociare con registro cassa, ordini, chat e testimone.
 
-## scaffale_vini_mancanti.jpg
+## scaffale_vini_mancanti.png
 
 La foto mostra uno scaffale del magazzino vini con piu' ripiani. Sul ripiano basso del vino rosso alcune posizioni sono vuote e segnate a matita come se qualcuno avesse fatto un controllo inventario. In basso c'e' una nota operativa: "Nota Pietro: mensola bassa del rosso incompleta rispetto al conteggio."
 
 Pista: corrobora il messaggio di Diego nel gruppo staff, dove si parla di bottiglie che non tornano. Non indica chi le abbia prese.
 
-## cassa_fornitore_non_in_lista.jpg
+## cassa_fornitore_non_in_lista.png
 
 La foto mostra l'area consegne del retro cucina. Ci sono casse riconoscibili di fornitori noti, come Ortofrutta Conti, Dispensa Roma e Caseificio Sabelli. In primo piano, separata e bordata in rosso, c'e' una cassa con scritto **Cantina Velia - vino misto - 12 bt**. In basso c'e' una nota: "Cassa trovata nel retro senza bolla allegata. Da ricontrollare con gli ordini."
 
 Pista: Cantina Velia e' un nome da confrontare con `ordini_fornitori.csv`. L'immagine non dice da sola che sia furto; serve verificare se quel fornitore risulta negli ordini recenti.
 
-## cassetto_posate_vuoti.jpg
+## cassetto_posate_vuoti.png
 
 La foto mostra un cassetto portaposate di sala. Alcuni scomparti sono quasi pieni, altri hanno vuoti evidenti, soprattutto tra cucchiai e coltelli. La didascalia interna parla di "vuoti anomali in cucchiai e coltelli da sala".
 
