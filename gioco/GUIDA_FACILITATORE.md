@@ -62,7 +62,7 @@ Le password servono sia ad **avanzare** a fine fase, sia a **sbloccare in antici
 
 ## Come funziona l'assistente AI
 
-Due usi distinti, entrambi con chiave attiva (modello: Claude `haiku-4-5` o Gemini `2.5-flash`):
+Due usi distinti, entrambi con chiave attiva (modello: Claude `sonnet-4-6` — consigliato — o in alternativa Gemini `2.5-flash`):
 
 1. **Commento del consulente** (Fase 1 e 2): dopo ogni simulazione, l'AI commenta le scelte in modo qualitativo e suggerisce come avvicinarsi all'assetto giusto, **senza svelare la soluzione**.
 2. **Testimone "Romano"** (Fase 3): un cliente abituale che ha visto qualcosa la sera del furto. **Risponde solo a domande specifiche** e fa un po' di resistenza (vorrebbe una cena in cambio). Domande utili da suggerire ai gruppi se si bloccano:

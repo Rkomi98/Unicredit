@@ -79,7 +79,7 @@ Silvia:  Io ci sono dopo le 23. Tenetemi una fetta.
 > Foto di uno scaffale del magazzino vini, più ripiani. Sul **ripiano basso del vino rosso** alcune posizioni sono **vuote** e segnate a matita come dopo un controllo inventario. In basso un foglietto/nota a mano: **"Nota Pietro: mensola bassa del rosso incompleta rispetto al conteggio."** Realistico, non drammatizzato.
 
 ### cassa_fornitore_non_in_lista.jpg
-> Area consegne del retro cucina. Diverse casse di fornitori noti con etichette leggibili: **Ortofrutta Conti**, **Dispensa Roma**, **Caseificio Sabelli**. In primo piano, **separata e bordata di rosso**, una cassa con la scritta **"Cantina Velia – vino misto – 12 bt"**. Sotto, una nota: **"Cassa trovata nel retro senza bolla allegata. Da ricontrollare con gli ordini."**
+> Area consegne del retro cucina. Diverse casse di fornitori noti con etichette leggibili: **Ortofrutta Conti**, **Dispense de la sora Lella**, **Caseificio Sabelli**. In primo piano, **separata e bordata di rosso**, una cassa con la scritta **"Cantina de Frascati – vino misto – 12 bt"**. Sotto, una nota: **"Cassa trovata nel retro senza bolla allegata. Da ricontrollare con gli ordini."**
 
 ### cassetto_posate_vuoti.jpg
 > Cassetto portaposate di sala visto dall'alto: alcuni scomparti quasi pieni, altri con **vuoti evidenti**, soprattutto **cucchiai e coltelli**. Piccola didascalia interna: **"vuoti anomali in cucchiai e coltelli da sala"**.
