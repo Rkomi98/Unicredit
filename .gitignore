@@ -22,6 +22,8 @@ Desktop.ini
 *.key
 credentials.json
 secrets.json
+secret.local.js
+**/secret.local.js
 
 # Python
 __pycache__/
