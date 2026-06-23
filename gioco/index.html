@@ -25,9 +25,12 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
 .btn i{font-size:19px}
 .btn.ghost{background:transparent;color:var(--accent);border-color:var(--accent)}
 .btn.ghost:hover{background:rgba(176,73,45,.08)}
+.btn.sm{font-size:13px;padding:9px 15px}
+.btn.sm i{font-size:16px}
 .btn:disabled{opacity:.6;cursor:default}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.zip-note{font-size:12.5px;color:var(--muted);margin-top:10px}
+.zip-note{font-size:12.5px;color:var(--muted);margin-top:8px}
+.phase-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.phase-head .ph-left{min-width:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{display:inline-block;animation:spin .8s linear infinite}
 .sec-head{font-family:"Oddval Text";font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:38px 0 14px;display:flex;align-items:center;gap:9px}
@@ -53,20 +56,24 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
     <div class="kick">La sfida · Trattoria di Testaccio · Showcase Unicredit</div>
     <h1>Da trattoria in crisi<br>a rilancio sostenibile</h1>
     <p class="sub">Quattro fasi per rimettere in piedi una trattoria romana sull'orlo del baratro: salva i conti, rilancia il locale, e scopri chi sta sabotando dall'interno. Avvia il gioco e tieni a portata di mano i materiali qui sotto.</p>
-    <div class="cta-row">
-      <a class="btn" href="restaurant_game.html"><i class="ti ti-player-play"></i> Avvia il gioco</a>
-      <button class="btn ghost" id="zip-btn" onclick="scaricaTuttoZip(this)"><i class="ti ti-file-zip"></i> Scarica tutti i materiali (ZIP)</button>
-    </div>
-    <div class="zip-note">Un unico archivio con tutti i file delle tre fasi, già divisi in cartelle. Oppure scarica i singoli file qui sotto.</div>
+    <a class="btn" href="restaurant_game.html"><i class="ti ti-player-play"></i> Avvia il gioco</a>
+    <div class="zip-note">Ogni fase ha un pulsante per scaricare in un colpo solo tutti i suoi materiali in un archivio ZIP — oppure prendi i singoli file.</div>
   </div>
 
   <div class="sec-head"><i class="ti ti-folder"></i> Materiali da scaricare</div>
 
   <div class="phase">
-    <div class="phase-title">Fase 1 — Triage</div>
-    <div class="phase-q">Quanto sta davvero male la Trattoria della Stella?</div>
+    <div class="phase-head">
+      <div class="ph-left">
+        <div class="phase-title">Fase 1 — Triage</div>
+        <div class="phase-q" style="margin-bottom:0">Quanto sta davvero male la Trattoria della Stella?</div>
+      </div>
+      <button class="btn ghost sm" onclick="scaricaFaseZip(this,'materiali_fase1')"><i class="ti ti-file-zip"></i> Download Fase 1 (ZIP)</button>
+    </div>
     <div class="mat-grid">
       <a class="mat" href="fase1-dati-operativi/cassa.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">cassa.md</div><div class="ds">Liquidità al 2 gennaio 2026</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/menu.pdf" download><span class="ic"><i class="ti ti-file-type-pdf"></i></span><span class="tx"><div class="nm">menu.pdf</div><div class="ds">Menù attuale del locale</div></span></a>
+      <a class="mat" href="fase1-dati-operativi/menu_storici.zip" download><span class="ic"><i class="ti ti-file-zip"></i></span><span class="tx"><div class="nm">menu_storici.zip</div><div class="ds">Menù 2012–2021</div></span></a>
       <a class="mat" href="fase1-dati-operativi/costi_fissi.xlsx" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">costi_fissi.xlsx</div><div class="ds">Affitti, utenze, rate</div></span></a>
       <a class="mat" href="fase1-dati-operativi/costi_ingredienti.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">costi_ingredienti.csv</div><div class="ds">Prezzi di acquisto</div></span></a>
       <a class="mat" href="fase1-dati-operativi/acquisti_magazzino.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">acquisti_magazzino.csv</div><div class="ds">Storico ordini fornitori</div></span></a>
@@ -79,8 +86,13 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
   </div>
 
   <div class="phase">
-    <div class="phase-title">Fase 2 — Rilancio</div>
-    <div class="phase-q">C'è un futuro per questo locale? Quale?</div>
+    <div class="phase-head">
+      <div class="ph-left">
+        <div class="phase-title">Fase 2 — Rilancio</div>
+        <div class="phase-q" style="margin-bottom:0">C'è un futuro per questo locale? Quale?</div>
+      </div>
+      <button class="btn ghost sm" onclick="scaricaFaseZip(this,'materiali_fase2')"><i class="ti ti-file-zip"></i> Download Fase 2 (ZIP)</button>
+    </div>
     <div class="mat-grid">
       <a class="mat" href="fase2-contesto-mercato/recensioni.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">recensioni.csv</div><div class="ds">Google e TheFork, 18 mesi</div></span></a>
       <a class="mat" href="fase2-contesto-mercato/feedback_personale.txt" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">feedback_personale.txt</div><div class="ds">Commenti anonimi staff</div></span></a>
@@ -90,8 +102,13 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
   </div>
 
   <div class="phase">
-    <div class="phase-title">Fase 3 — Il sabotatore</div>
-    <div class="phase-q">Qualcuno sta sabotando il locale dall'interno. Chi?</div>
+    <div class="phase-head">
+      <div class="ph-left">
+        <div class="phase-title">Fase 3 — Il sabotatore</div>
+        <div class="phase-q" style="margin-bottom:0">Qualcuno sta sabotando il locale dall'interno. Chi?</div>
+      </div>
+      <button class="btn ghost sm" onclick="scaricaFaseZip(this,'materiali_fase3')"><i class="ti ti-file-zip"></i> Download Fase 3 (ZIP)</button>
+    </div>
     <div class="mat-grid">
       <a class="mat" href="fase3-indagine/dipendenti.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">dipendenti.csv</div><div class="ds">Anagrafica e turni</div></span></a>
       <a class="mat" href="fase3-indagine/ordini_fornitori.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">ordini_fornitori.csv</div><div class="ds">Ordini recenti</div></span></a>
@@ -117,12 +134,15 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
 </div>
 
 <script>
-// Impacchetta in un unico ZIP tutti i materiali elencati come <a class="mat" download>,
-// preservando la struttura delle cartelle (fase1.../fase2.../fase3...).
-async function scaricaTuttoZip(btn) {
+// Impacchetta in un ZIP i soli materiali della fase a cui appartiene il pulsante
+// (i link <a class="mat" download> dentro lo stesso .phase). Il prefisso della
+// cartella di fase viene rimosso, mantenendo però le sottocartelle (es. chat_whatsapp/).
+async function scaricaFaseZip(btn, nomeArchivio) {
   if (typeof JSZip === "undefined") { alert("Libreria ZIP non caricata: controlla la connessione e riprova."); return; }
-  const links = Array.from(document.querySelectorAll("a.mat[href][download]"));
+  const phase = btn.closest(".phase");
+  const links = Array.from(phase.querySelectorAll("a.mat[href][download]"));
   const paths = [...new Set(links.map(a => a.getAttribute("href")))];
+  if (!paths.length) { alert("Nessun materiale da scaricare per questa fase."); return; }
   const orig = btn.innerHTML;
   btn.disabled = true;
   let done = 0, falliti = [];
@@ -134,7 +154,9 @@ async function scaricaTuttoZip(btn) {
       try {
         const res = await fetch(path);
         if (!res.ok) throw new Error("HTTP " + res.status);
-        zip.file(path, await res.blob());
+        // togli il primo segmento (cartella di fase), tieni eventuali sottocartelle
+        const inner = path.split("/").slice(1).join("/") || path;
+        zip.file(inner, await res.blob());
       } catch(e) { falliti.push(path); }
       done++; setLabel();
     }
@@ -142,7 +164,7 @@ async function scaricaTuttoZip(btn) {
     const blob = await zip.generateAsync({ type:"blob" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "trattoria_della_stella_materiali.zip";
+    a.download = (nomeArchivio || "materiali") + ".zip";
     a.click(); URL.revokeObjectURL(a.href);
     if (falliti.length) alert("Archivio creato, ma alcuni file non sono stati trovati:\n" + falliti.join("\n"));
   } catch(e) {
