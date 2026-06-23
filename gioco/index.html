@@ -55,7 +55,7 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
   <div class="hero">
     <div class="kick">La sfida · Trattoria di Testaccio · Showcase Unicredit</div>
     <h1>Da trattoria in crisi<br>a rilancio sostenibile</h1>
-    <p class="sub">Quattro fasi per rimettere in piedi una trattoria romana sull'orlo del baratro: salva i conti, rilancia il locale, e scopri chi sta sabotando dall'interno. Avvia il gioco e tieni a portata di mano i materiali qui sotto.</p>
+    <p class="sub">Due fasi per rimettere in piedi una trattoria romana sull'orlo del baratro: prima salva i conti, poi scopri chi sta sabotando dall'interno. Avvia il gioco e tieni a portata di mano i materiali qui sotto.</p>
     <a class="btn" href="restaurant_game.html"><i class="ti ti-player-play"></i> Avvia il gioco</a>
     <div class="zip-note">Ogni fase ha un pulsante per scaricare in un colpo solo tutti i suoi materiali in un archivio ZIP — oppure prendi i singoli file.</div>
   </div>
@@ -88,44 +88,45 @@ h1{font-family:"Oddval Text";font-weight:700;font-size:44px;line-height:1.05;let
   <div class="phase">
     <div class="phase-head">
       <div class="ph-left">
-        <div class="phase-title">Fase 2 — Rilancio</div>
-        <div class="phase-q" style="margin-bottom:0">C'è un futuro per questo locale? Quale?</div>
+        <div class="phase-title">Fase 2 — Il sabotatore</div>
+        <div class="phase-q" style="margin-bottom:0">Qualcuno sta sabotando il locale dall'interno. Chi?</div>
       </div>
       <button class="btn ghost sm" onclick="scaricaFaseZip(this,'materiali_fase2')"><i class="ti ti-file-zip"></i> Download Fase 2 (ZIP)</button>
     </div>
     <div class="mat-grid">
-      <a class="mat" href="fase2-contesto-mercato/recensioni.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">recensioni.csv</div><div class="ds">Google e TheFork, 18 mesi</div></span></a>
-      <a class="mat" href="fase2-contesto-mercato/feedback_personale.txt" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">feedback_personale.txt</div><div class="ds">Commenti anonimi staff</div></span></a>
-      <a class="mat" href="fase2-contesto-mercato/report_quartiere.pdf" download><span class="ic"><i class="ti ti-file-type-pdf"></i></span><span class="tx"><div class="nm">report_quartiere.pdf</div><div class="ds">Report demografico zona</div></span></a>
-      <a class="mat" href="fase2-contesto-mercato/trend_ristorazione.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">trend_ristorazione.md</div><div class="ds">Cinque trend del 2026</div></span></a>
+      <a class="mat" href="fase2-indagine/dipendenti.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">dipendenti.csv</div><div class="ds">Anagrafica e turni</div></span></a>
+      <a class="mat" href="fase2-indagine/ordini_fornitori.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">ordini_fornitori.csv</div><div class="ds">Ordini recenti</div></span></a>
+      <a class="mat" href="fase2-indagine/registro_cassa.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">registro_cassa.csv</div><div class="ds">Movimenti cassa giornalieri</div></span></a>
+      <a class="mat" href="fase2-indagine/biglietto_anonimo.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">biglietto_anonimo.png</div><div class="ds">Biglietto trovato in magazzino</div></span></a>
+      <a class="mat" href="fase2-indagine/chat_whatsapp/screen_giulia_sara.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Giulia / Sara</div><div class="ds">Screenshot WhatsApp</div></span></a>
+      <a class="mat" href="fase2-indagine/chat_whatsapp/screen_silvia_elisa.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Silvia / Elisa</div><div class="ds">Screenshot WhatsApp</div></span></a>
+      <a class="mat" href="fase2-indagine/chat_whatsapp/screen_sara_pietro.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Sara / Pietro</div><div class="ds">Screenshot WhatsApp</div></span></a>
+      <a class="mat" href="fase2-indagine/chat_whatsapp/cucina_sala.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">gruppo — cucina/sala</div><div class="ds">Chat di gruppo staff</div></span></a>
+      <a class="mat" href="fase2-indagine/chat_whatsapp/compleanno_matteo.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">gruppo — compleanno Matteo</div><div class="ds">Chat di gruppo informale</div></span></a>
+      <a class="mat" href="fase2-indagine/foto_magazzino/scaffale_vini_mancanti.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — scaffale vini</div><div class="ds">Bottiglie mancanti</div></span></a>
+      <a class="mat" href="fase2-indagine/foto_magazzino/cassa_fornitore_non_in_lista.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — cassa fornitore</div><div class="ds">Fornitore non in lista</div></span></a>
+      <a class="mat" href="fase2-indagine/foto_magazzino/cassetto_posate_vuoti.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — cassetto posate</div><div class="ds">Vuoti anomali</div></span></a>
+      <a class="mat" href="fase2-indagine/foto_magazzino/retro_notte_auto_giovedi.jpg" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — retro di notte</div><div class="ds">Auto nel vicolo, giovedì</div></span></a>
+      <a class="mat" href="fase2-indagine/vocali/vocale_sara.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Sara</div><div class="ds">Messaggio audio</div></span></a>
+      <a class="mat" href="fase2-indagine/vocali/vocale_giulia.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Giulia</div><div class="ds">Messaggio audio</div></span></a>
+      <a class="mat" href="fase2-indagine/vocali/vocale_elisa.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Elisa</div><div class="ds">Messaggio audio</div></span></a>
     </div>
   </div>
 
+  <div class="sec-head" style="margin-top:48px"><i class="ti ti-archive"></i> Materiale extra (facoltativo)</div>
   <div class="phase">
     <div class="phase-head">
       <div class="ph-left">
-        <div class="phase-title">Fase 3 — Il sabotatore</div>
-        <div class="phase-q" style="margin-bottom:0">Qualcuno sta sabotando il locale dall'interno. Chi?</div>
+        <div class="phase-title">Contesto di mercato</div>
+        <div class="phase-q" style="margin-bottom:0">Non usato nel gioco — recensioni, quartiere e trend, utili come approfondimento.</div>
       </div>
-      <button class="btn ghost sm" onclick="scaricaFaseZip(this,'materiali_fase3')"><i class="ti ti-file-zip"></i> Download Fase 3 (ZIP)</button>
+      <button class="btn ghost sm" onclick="scaricaFaseZip(this,'materiale_extra')"><i class="ti ti-file-zip"></i> Download extra (ZIP)</button>
     </div>
     <div class="mat-grid">
-      <a class="mat" href="fase3-indagine/dipendenti.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">dipendenti.csv</div><div class="ds">Anagrafica e turni</div></span></a>
-      <a class="mat" href="fase3-indagine/ordini_fornitori.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">ordini_fornitori.csv</div><div class="ds">Ordini recenti</div></span></a>
-      <a class="mat" href="fase3-indagine/registro_cassa.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">registro_cassa.csv</div><div class="ds">Movimenti cassa giornalieri</div></span></a>
-      <a class="mat" href="fase3-indagine/biglietto_anonimo.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">biglietto_anonimo.png</div><div class="ds">Biglietto trovato in magazzino</div></span></a>
-      <a class="mat" href="fase3-indagine/chat_whatsapp/screen_giulia_sara.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Giulia / Sara</div><div class="ds">Screenshot WhatsApp</div></span></a>
-      <a class="mat" href="fase3-indagine/chat_whatsapp/screen_silvia_elisa.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Silvia / Elisa</div><div class="ds">Screenshot WhatsApp</div></span></a>
-      <a class="mat" href="fase3-indagine/chat_whatsapp/screen_sara_pietro.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">chat — Sara / Pietro</div><div class="ds">Screenshot WhatsApp</div></span></a>
-      <a class="mat" href="fase3-indagine/chat_whatsapp/cucina_sala.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">gruppo — cucina/sala</div><div class="ds">Chat di gruppo staff</div></span></a>
-      <a class="mat" href="fase3-indagine/chat_whatsapp/compleanno_matteo.png" download><span class="ic"><i class="ti ti-message-2"></i></span><span class="tx"><div class="nm">gruppo — compleanno Matteo</div><div class="ds">Chat di gruppo informale</div></span></a>
-      <a class="mat" href="fase3-indagine/foto_magazzino/scaffale_vini_mancanti.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — scaffale vini</div><div class="ds">Bottiglie mancanti</div></span></a>
-      <a class="mat" href="fase3-indagine/foto_magazzino/cassa_fornitore_non_in_lista.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — cassa fornitore</div><div class="ds">Fornitore non in lista</div></span></a>
-      <a class="mat" href="fase3-indagine/foto_magazzino/cassetto_posate_vuoti.png" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — cassetto posate</div><div class="ds">Vuoti anomali</div></span></a>
-      <a class="mat" href="fase3-indagine/foto_magazzino/retro_notte_auto_giovedi.jpg" download><span class="ic"><i class="ti ti-photo"></i></span><span class="tx"><div class="nm">foto — retro di notte</div><div class="ds">Auto nel vicolo, giovedì</div></span></a>
-      <a class="mat" href="fase3-indagine/vocali/vocale_sara.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Sara</div><div class="ds">Messaggio audio</div></span></a>
-      <a class="mat" href="fase3-indagine/vocali/vocale_giulia.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Giulia</div><div class="ds">Messaggio audio</div></span></a>
-      <a class="mat" href="fase3-indagine/vocali/vocale_elisa.mp3" download><span class="ic"><i class="ti ti-microphone"></i></span><span class="tx"><div class="nm">vocale — Elisa</div><div class="ds">Messaggio audio</div></span></a>
+      <a class="mat" href="materiale-extra/recensioni.csv" download><span class="ic"><i class="ti ti-table"></i></span><span class="tx"><div class="nm">recensioni.csv</div><div class="ds">Google e TheFork, 18 mesi</div></span></a>
+      <a class="mat" href="materiale-extra/feedback_personale.txt" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">feedback_personale.txt</div><div class="ds">Commenti anonimi staff</div></span></a>
+      <a class="mat" href="materiale-extra/report_quartiere.pdf" download><span class="ic"><i class="ti ti-file-type-pdf"></i></span><span class="tx"><div class="nm">report_quartiere.pdf</div><div class="ds">Report demografico zona</div></span></a>
+      <a class="mat" href="materiale-extra/trend_ristorazione.md" download><span class="ic"><i class="ti ti-file-text"></i></span><span class="tx"><div class="nm">trend_ristorazione.md</div><div class="ds">Cinque trend del 2026</div></span></a>
     </div>
   </div>
 

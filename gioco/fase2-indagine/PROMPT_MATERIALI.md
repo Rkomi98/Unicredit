@@ -1,4 +1,4 @@
-# Prompt per (ri)generare i materiali multimodali — Fase 3
+# Prompt per (ri)generare i materiali multimodali — Fase 2 (indagine)
 
 Prompt pronti all'uso per produrre gli asset dell'indagine in modo **coerente** e di buona qualità.
 Le trascrizioni in `chat_whatsapp/descrizione_conversazioni.md`, `foto_magazzino/descrizione_foto.md` e `vocali/script_vocali.md` restano la **ground truth dei contenuti**: i prompt qui sotto li rendono in immagine/audio, non li reinventano.
@@ -114,7 +114,7 @@ Un dipendente che non ci sta più.
 **Come si rigenerano:** script pronto `vocali/genera_vocali.mjs` — usa la **Realtime API di OpenAI** (`gpt-realtime`) con la cadenza **romanesca** guidata dal system prompt, una voce distinta per personaggio (Sara=coral, Giulia=shimmer, Elisa=sage). Richiede `OPENAI_API_KEY` nel `.env` di `gioco/`, Node ≥ 22 e `ffmpeg`.
 
 ```
-cd gioco/fase3-indagine/vocali
+cd gioco/fase2-indagine/vocali
 node genera_vocali.mjs            # genera tutti e 3
 node genera_vocali.mjs sara       # solo uno: sara | giulia | elisa
 ```

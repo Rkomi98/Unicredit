@@ -8,15 +8,15 @@ Materiali per il gioco di ruolo interattivo presentato allo showcase Unicredit d
 
 **La Trattoria della Stella** è un ristorante romano gestito da Marco Stella. Il locale ha attraversato anni difficili: liquidità risicata, personale instabile, sala nuova mai valorizzata e una presenza online ferma al 2022. Di recente qualcosa di più grave è emerso: irregolarità in magazzino, cassa che non quadra, ordini con fornitori non riconosciuti.
 
-I partecipanti vestono i panni di consulenti ingaggiati per analizzare la situazione, proporre un piano di rilancio e — nella fase finale — scoprire chi sta sabotando dall'interno.
+I partecipanti vestono i panni di consulenti ingaggiati per analizzare la situazione, fermare l'emorragia dei conti e — nella seconda fase — scoprire chi sta sabotando dall'interno.
 
 ---
 
 ## Come si gioca
 
-Il file `restaurant_game.html` contiene l'intera interfaccia di gioco: basta aprirlo nel browser, non serve installare nulla né avviare un server. **Serve però la connessione a internet** per due cose: le icone (caricate da CDN) e l'assistente AI — il testimone della Fase 3 e i commenti del consulente (richiedono una chiave Claude o Gemini). I font del corpo (Poppins) sono inclusi in `fonts/`; i font brand Oddval vanno aggiunti lì (vedi `fonts/README.md`), altrimenti si usa un fallback pulito.
+Il file `restaurant_game.html` contiene l'intera interfaccia di gioco: basta aprirlo nel browser, non serve installare nulla né avviare un server. **Serve però la connessione a internet** per due cose: le icone (caricate da CDN) e l'assistente AI — il testimone della Fase 2 e i commenti del consulente (richiedono una chiave Claude o Gemini). I font del corpo (Poppins) sono inclusi in `fonts/`; i font brand Oddval vanno aggiunti lì (vedi `fonts/README.md`), altrimenti si usa un fallback pulito.
 
-Le tre fasi si sbloccano progressivamente con le **password del facilitatore** (vedi sotto), che sono anche la leva per scandire i tempi della giornata.
+Le due fasi si sbloccano progressivamente con le **password del facilitatore** (vedi sotto), che sono anche la leva per scandire i tempi della giornata.
 
 ## Password facilitatore (una per gate)
 
@@ -24,8 +24,7 @@ Riveli ogni password al momento giusto per controllare il ritmo:
 
 | Gate | Password |
 |---|---|
-| Sblocca **Fase 2 — Rilancio** | `Un!credit01` |
-| Sblocca **Fase 3 — Il sabotatore** | `D4t4p1zz4` |
+| Sblocca **Fase 2 — Indagine** | `Un!credit01` |
 | Riepilogo finale (dopo l'accusa) | `OhNo!` |
 | Reset partita (tra un gruppo e l'altro) | `ResetStella!` |
 
@@ -35,10 +34,9 @@ Riveli ogni password al momento giusto per controllare il ritmo:
 |---|---|
 | Apertura + scenario + setup | ~8 min |
 | Tutorial (demo guidata) | ~4 min |
-| **Fase 1 — Triage** | ~20 min (i primi **8 min** sono di sola analisi con Claude, poi si simula) |
-| **Fase 2 — Rilancio** | ~16 min (lock di **5 min**; a ~7 min lo **chef si licenzia** a sorpresa) |
-| **Fase 3 — Indagine** | ~10 min (il cronometro penalizza il tempo) |
-| Speech / pitch dei migliori + giuria | ~22 min |
+| **Fase 1 — Triage** | ~28 min (i primi **8 min** sono di sola analisi con Claude, poi si simula) |
+| **Fase 2 — Indagine** | ~25 min (il cronometro penalizza il tempo) |
+| Speech / pitch dei migliori + giuria | ~25 min |
 
 Dettagli operativi completi in `GUIDA_FACILITATORE.md`.
 
@@ -52,8 +50,7 @@ Il filo conduttore della giornata: mostrare a un pubblico C-level come l'AI gene
 |---|---|
 | **Tutorial** | Capire il meccanismo base — input → simulazione → risultato — e prendere confidenza con l'idea di lavorare *insieme* a un assistente AI, non da soli. |
 | **Fase 1 — Triage** | Usare l'AI per esplorare e dare senso a dati grezzi ed eterogenei (CSV, Excel, database) e costruire una **diagnosi economica**: dove si perdono i soldi, cosa fermare subito. → *analisi esplorativa dei dati assistita da AI*. |
-| **Fase 2 — Rilancio** | Trasformare segnali qualitativi ed esterni (recensioni, report di quartiere, trend) in una **strategia**, e riadattare le decisioni a un imprevisto (lo chef si licenzia). → *decisione sotto incertezza e sintesi qualitativa con l'AI*. |
-| **Fase 3 — Indagine** | Incrociare fonti **parziali e multimodali** (immagini, audio, chat, tabelle) per arrivare a una conclusione, interrogando un testimone AI e riconoscendo i depistaggi. → *ragionamento multimodale e verifica delle ipotesi*. |
+| **Fase 2 — Indagine** | Incrociare fonti **parziali e multimodali** (immagini, audio, chat, tabelle) per arrivare a una conclusione, interrogando un testimone AI e riconoscendo i depistaggi. → *ragionamento multimodale e verifica delle ipotesi*. |
 | **Pitch finale** | Raccontare in modo convincente le scelte fatte e ciò che l'AI ha permesso di scoprire. → *comunicazione data-driven*. |
 
 ---
@@ -63,10 +60,11 @@ Il filo conduttore della giornata: mostrare a un pubblico C-level come l'AI gene
 ```
 gioco/
 ├── restaurant_game.html          ← app di gioco (apri nel browser)
+├── index.html                    ← hub per scaricare i materiali
 │
 ├── fase1-dati-operativi/         ← Fase 1 — Triage
-├── fase2-contesto-mercato/       ← Fase 2 — Rilancio
-└── fase3-indagine/               ← Fase 3 — Il sabotatore
+├── fase2-indagine/               ← Fase 2 — Il sabotatore
+└── materiale-extra/              ← contesto di mercato (non usato nel gioco)
 ```
 
 ---
@@ -91,29 +89,14 @@ I partecipanti ricevono i dati operativi grezzi del locale e devono costruirsi u
 
 ---
 
-## Fase 2 — Rilancio
-
-> *C'è un futuro per questo locale? Quale?*
-
-Dati di contesto esterno: cosa dicono i clienti, cosa fa il mercato, cosa succede nel quartiere. Servono per calibrare le proposte di rilancio sulla realtà, non sulla speranza.
-
-| File | Contenuto |
-|---|---|
-| `recensioni.csv` | Recensioni Google e TheFork (ultimi 18 mesi) |
-| `feedback_personale.txt` | Commenti anonimi dalla scatola dei suggerimenti interni |
-| `report_quartiere.pdf` | Report demografico e commerciale del quartiere |
-| `trend_ristorazione.md` | Articolo di settore — cinque trend del 2026 |
-
----
-
-## Fase 3 — Il sabotatore
+## Fase 2 — Il sabotatore
 
 > *Qualcuno sta sabotando il locale dall'interno. Chi?*
 
 Prove fisiche, conversazioni private e testimonianze audio. Ogni indizio è reale ma parziale: servono più fonti incrociate per costruire un caso solido.
 
 ```
-fase3-indagine/
+fase2-indagine/
 ├── dipendenti.csv              ← anagrafica e turni del personale
 ├── ordini_fornitori.csv        ← ordini recenti (inclusi quelli sospetti)
 ├── registro_cassa.csv          ← movimenti cassa giornalieri
