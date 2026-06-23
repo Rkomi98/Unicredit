@@ -326,7 +326,7 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
       <div id="params-f1"></div>
       <div class="actions-row">
         <button class="btn primary" id="submit-f1" onclick="submitFase(1)"><i class="ti ti-player-play" aria-hidden="true"></i> Simula mese</button>
-        <button class="btn" id="solution-f1" onclick="daiSoluzione(1)" style="display:none">Dai la soluzione <i class="ti ti-bulb" aria-hidden="true"></i></button>
+        <button class="btn" id="solution-f1" onclick="daiSoluzione(1)">Dai la soluzione <i class="ti ti-bulb" aria-hidden="true"></i></button>
         <button class="btn ghost" onclick="copiaParametri(1,this)"><i class="ti ti-copy" aria-hidden="true"></i> Copia parametri</button>
       </div>
       <div class="cooldown-note" id="cooldown-f1"></div>
@@ -416,7 +416,7 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
 <!-- ════════ MODAL ════════ -->
 <div class="scrim" id="modal-overlay"><div class="popup" id="modal-box"></div></div>
 
-<!-- Passphrase per decifrare l'indizio Fase 2 (chiave offuscata, non in chiaro). -->
+<!-- Passphrase per decifrare l'indizio Fase 2. File NON committato (gitignored). -->
 <script src="secret.local.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
