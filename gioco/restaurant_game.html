@@ -242,11 +242,6 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
 /* ── footer ──────────────────────────────────────────────────────────── */
 .footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
 .footer.hidden{display:none}
-.warming-toggle{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);cursor:pointer;user-select:none}
-.switch{width:38px;height:21px;border-radius:999px;background:var(--track);position:relative;transition:background .2s;flex:none}
-.switch.on{background:var(--accent)}
-.switch::after{content:"";position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.3)}
-.switch.on::after{transform:translateX(17px)}
 .reset-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .reset-row input{padding:8px 11px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:13px;width:150px;font-family:"Poppins"}
 .pw-err-inline{font-size:12px;color:var(--neg);display:none}
@@ -393,25 +388,10 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
         <div class="flbl" style="text-align:center">Punteggio oggettivo finale (pre-pitch)</div>
         <div class="big" id="finale-big">€ 0</div>
       </div>
-      <div class="sep"></div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <button class="btn primary" onclick="esportaScheda()"><i class="ti ti-file-export" aria-hidden="true"></i> Esporta scheda partita (per il pitch)</button>
-        <span style="font-size:12px;color:var(--muted)">Base per il pitch finale.</span>
-      </div>
-      <div id="export-wrap" style="display:none;margin-top:14px">
-        <textarea class="export-area" id="export-area" readonly></textarea>
-        <div style="margin-top:.5rem;display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn ghost" onclick="copiaScheda(this)"><i class="ti ti-copy" aria-hidden="true"></i> Copia</button>
-          <button class="btn ghost" onclick="scaricaScheda()"><i class="ti ti-download" aria-hidden="true"></i> Scarica .md</button>
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="footer" id="footer">
-    <div class="warming-toggle" onclick="toggleWarming()">
-      <span class="switch on" id="warming-switch"></span> Atmosfera che si scalda a ogni fase
-    </div>
     <div class="reset-row">
       <input type="text" id="reset-pass" placeholder="Password reset">
       <button class="btn ghost" onclick="resetWithPassword('reset-pass','reset-pass-err')"><i class="ti ti-refresh" aria-hidden="true"></i> Reset partita</button>
@@ -720,10 +700,7 @@ function renderName() {
 function applyWarming() {
   document.body.setAttribute("data-warming", state.warming ? "on" : "off");
   document.body.setAttribute("data-phase", String(Math.min(4, currentView || 1)));
-  const sw = document.getElementById("warming-switch");
-  if (sw) sw.className = "switch" + (state.warming ? " on" : "");
 }
-function toggleWarming(){ state.warming = !state.warming; saveState(); applyWarming(); }
 
 // ═══════════════════════════════════════════════════════════════════════════
 //  PARAMETRI / SLIDER — fissi PRIMA (in evidenza), poi variabili
@@ -1320,41 +1297,10 @@ function mostraRiepilogo() {
   const bigEl = document.getElementById("finale-big");
   bigEl.textContent = formatEur(state.saldo);
   bigEl.className = "big " + (state.saldo >= 0 ? "pos" : "neg");
-  document.getElementById("export-wrap").style.display = "none";
   updateSaldoBar();
   window.scrollTo(0,0);
 }
 
-function schedaTesto() {
-  recomputeFinancials();
-  const L = [];
-  const p = i => state.params[i];
-  L.push(`# Scheda partita — ${state.nome}`); L.push(``);
-  L.push(`Trattoria romana a Testaccio (Via Luca della Robbia 14).`); L.push(``);
-  const r1 = state.risultati[0];
-  if (r1) { L.push(`## Fase 1 — Triage`);
-    L.push(`- Decisioni: ingredienti €${p(0).ing}/coperto, prezzo €${p(0).prz}/coperto, personale ${formatEur(p(0).per)}/mese, marketing ${formatEur(p(0).mkt)}/mese, locale ${formatEur(p(0).loc)}/mese.`);
-    L.push(`- Risultato: ${r1.clienti} clienti/giorno, ricavo ${formatEur(r1.ricavo)}, margine operativo ${formatEur(r1.saldo_mese)}.`);
-    L.push(`- Saldo cumulato dopo F1: ${formatEur(state._cumF1)}`); L.push(``); }
-  if (state.colpevole_trovato) { const m = state._malusBreak || {perdTempo:0,perdAccuse:0};
-    L.push(`## Fase 2 — Il sabotatore`);
-    L.push(`- Esito indagine: colpevole individuato (${COLPEVOLE_NOME}).`);
-    L.push(`- Tempo impiegato: ${formatTimer(state.timer_elapsed)} · accuse sbagliate: ${state.accuse_sbagliate}.`);
-    L.push(`- Soldi persi: ${formatEur(state._malusTot||0)}.`);
-    L.push(`- Saldo cumulato dopo F3: ${formatEur(state._cumF3)}`); L.push(``); }
-  L.push(`## Punteggio oggettivo finale (pre-pitch): ${formatEur(state.saldo)}`); L.push(``);
-  L.push(`> Da completare nel pitch finale ai giudici: le tre cose inattese scoperte durante la partita.`);
-  return L.join("\n");
-}
-function esportaScheda(){ document.getElementById("export-area").value = schedaTesto(); document.getElementById("export-wrap").style.display = "block"; }
-function copiaScheda(btn){ const ta = document.getElementById("export-area"); ta.select(); copyText(ta.value, btn); }
-function scaricaScheda() {
-  const blob = new Blob([schedaTesto()], {type:"text/markdown"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `scheda_${state.nome.replace(/[^a-z0-9]+/gi,"_").toLowerCase()}.md`;
-  a.click(); URL.revokeObjectURL(a.href);
-}
 function resetWithPassword(inputId, errorId) {
   const input = document.getElementById(inputId);
   const err = document.getElementById(errorId);
