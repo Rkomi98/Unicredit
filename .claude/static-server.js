@@ -3,7 +3,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const ROOT = '/Users/mirkocalcaterra/Documents/GitHub/Unicredit/gioco';
-const PORT = 8123;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 8123;
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml',

@@ -381,8 +381,8 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
   <div id="screen-3" style="display:none">
     <div class="card" id="lock-f3" style="display:none">
       <div class="mhead">Fase 2 bloccata</div>
-      <div class="info-box">Per entrare prima della chiusura della fase precedente serve la password del facilitatore.</div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input type="text" id="unlock-pass-f3" style="padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:var(--card)" placeholder="Password facilitatore"><button class="btn" onclick="unlockFase(3)">Sblocca <i class="ti ti-lock-open" aria-hidden="true"></i></button><span id="unlock-f3-err" class="pw-err-inline">Password errata</span></div>
+      <div class="info-box">Stai entrando prima di aver chiuso la fase precedente.</div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="btn" onclick="unlockFase(3)">Entra comunque <i class="ti ti-lock-open" aria-hidden="true"></i></button></div>
     </div>
 
     <div class="warning-box"><i class="ti ti-alert-triangle" aria-hidden="true"></i> <div>I conti non tornano: qualcuno nello staff sta sottraendo risorse. <strong>Più tempo passa, più soldi spariscono.</strong> Ogni accusa sbagliata è un innocente licenziato che costa. Trova il colpevole il più in fretta possibile.</div></div>
@@ -559,11 +559,8 @@ const MODEL = (function(){
 // ═══════════════════════════════════════════════════════════════════════════
 //  COSTANTI DI GIOCO
 // ═══════════════════════════════════════════════════════════════════════════
-// Password facilitatore — una per ogni gate (riveli quella giusta al momento giusto per scandire i tempi)
-// NB: la fase indagine mantiene internamente l'id 3 (per l'utente è "Fase 2"): la chiave 3 è il gate Fase 1 → indagine.
-const PASS_GATE = { 3: "Un!credit01" };                 // ingresso all'indagine (Fase 2 per l'utente)
-const PASS_FINALE = "OhNo!";                            // riepilogo finale
-const PASS_RESET  = "ResetStella!";                     // reset partita (admin)
+// Nessuna password tra le sezioni: avanzamento e sblocco fasi sono liberi.
+const PASS_RESET  = "ResetStella!";                     // reset partita (admin, nel footer)
 const MAX_TENTATIVI = 3;
 const COOLDOWN_MS = { 1: 8*60*1000 };                   // lock "studio con Claude" — solo Fase 1
 const BUDGET_BASE = [20000, 0];
@@ -1145,19 +1142,10 @@ function openAdvance(fase) {
       <div class="cv ${ci.punteggio>=0?'pos':'neg'}">${formatEur(ci.punteggio)}</div>
       <div class="carry-sub">${sub}</div>
     </div>
-    <div class="pwl">
-      <label class="flbl">Password del facilitatore</label>
-      <input class="pw" id="modal-pass" placeholder="Password" onkeydown="if(event.key==='Enter')confirmAdvance(${fase})">
-      <div id="modal-pass-err" class="pw-err" style="display:none">Password errata</div>
-    </div>
     <button class="btn primary full" onclick="confirmAdvance(${fase})">Avanza alla Fase ${faseNum(next)} <i class="ti ti-arrow-right"></i></button>
   `);
-  setTimeout(()=>{ const p=document.getElementById("modal-pass"); if(p) p.focus(); }, 90);
 }
 function confirmAdvance(fase) {
-  const p = document.getElementById("modal-pass");
-  const expected = fase === 3 ? PASS_FINALE : PASS_GATE[nextPhaseOf(fase)];
-  if (!p || p.value !== expected) { const e=document.getElementById("modal-pass-err"); if(e) e.style.display="block"; return; }
   closeModal();
   if (fase >= 3) { state.fase = Math.max(state.fase, 3); recomputeFinancials(); saveState(); mostraRiepilogo(); return; }
   const next = nextPhaseOf(fase);
@@ -1181,14 +1169,8 @@ function openAccusaSuccess() {
       <div class="cv ${enter>=0?'pos':'neg'}">${formatEur(enter)}</div>
       <div class="carry-sub">Indagine conclusa: questo è il tuo saldo finale. Conferma per vedere il riepilogo.</div>
     </div>
-    <div class="pwl">
-      <label class="flbl">Password del facilitatore</label>
-      <input class="pw" id="modal-pass" placeholder="Password" onkeydown="if(event.key==='Enter')confirmAdvance(3)">
-      <div id="modal-pass-err" class="pw-err" style="display:none">Password errata</div>
-    </div>
     <button class="btn primary full" onclick="confirmAdvance(3)">Vai al riepilogo finale <i class="ti ti-trophy"></i></button>
   `);
-  setTimeout(()=>{ const p=document.getElementById("modal-pass"); if(p) p.focus(); }, 90);
 }
 function openAccusaFail(nome) {
   openModal(`
@@ -1203,9 +1185,6 @@ function openAccusaFail(nome) {
 //  AVANZAMENTO / NAV
 // ═══════════════════════════════════════════════════════════════════════════
 function unlockFase(targetFase) {
-  const pass = document.getElementById(`unlock-pass-f${targetFase}`).value;
-  if (pass !== PASS_GATE[targetFase]) { document.getElementById(`unlock-f${targetFase}-err`).style.display = "inline"; return; }
-  document.getElementById(`unlock-f${targetFase}-err`).style.display = "none";
   state.fase = Math.max(state.fase, targetFase);
   recomputeFinancials(); saveState();
   showPhase(targetFase);
@@ -1261,6 +1240,7 @@ function showPhase(fase) {
 function updateTabs(viewFase) {
   [1,2,3].forEach(f => {
     const tab = document.getElementById(`tab-${f}`);
+    if (!tab) return;
     let cls = "tab";
     if (f === viewFase) cls += " active";
     else if (f < state.fase) cls += " done";

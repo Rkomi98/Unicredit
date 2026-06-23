@@ -4,8 +4,9 @@
     {
       "name": "gioco",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["/Users/mirkocalcaterra/Documents/GitHub/Unicredit/gioco/_preview_server.js"],
-      "port": 8123
+      "runtimeArgs": ["/Users/mirkocalcaterra/Documents/GitHub/Unicredit/.claude/static-server.js"],
+      "port": 8123,
+      "autoPort": true
     }
   ]
 }
