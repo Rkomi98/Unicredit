@@ -238,8 +238,6 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .finale-saldo .big.pos{color:var(--pos)}
 .finale-saldo .big.neg{color:var(--neg)}
 textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;padding:13px;border:1px solid var(--line);border-radius:11px;background:var(--calc-bg);color:var(--ink);white-space:pre;overflow:auto}
-.gemini-key-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.gemini-key{flex:1 1 240px;min-width:0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--calc-bg);color:var(--ink);word-break:break-all;user-select:all}
 
 /* ── footer ──────────────────────────────────────────────────────────── */
 .footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
@@ -367,15 +365,6 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
         <div class="accusati-list" id="accusati-list"></div>
         <button class="btn primary" id="btn-accusa" onclick="accusa()" disabled style="background:var(--neg);border-color:var(--neg)">Accusa <span id="nome-selezionato">—</span></button>
       </div>
-
-      <div class="card" id="gemini-clue-card">
-        <div class="mhead"><i class="ti ti-key" aria-hidden="true" style="font-size:17px"></i> Credenziale trovata</div>
-        <div style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.5">Tra le carte del sabotatore spunta una variabile d'ambiente dimenticata. È oscurata: premi <strong>Copia</strong> per ottenere il valore reale.</div>
-        <div class="gemini-key-row">
-          <code class="gemini-key" id="gemini-key">GEMINI_API_KEY=••••••••••••••••••••••••••••</code>
-          <button class="btn ghost" onclick="copiaGemini(this)"><i class="ti ti-copy" aria-hidden="true"></i> Copia</button>
-        </div>
-      </div>
     </div>
 
     <div class="card" id="esito-f3-card" style="display:none">
@@ -416,8 +405,6 @@ textarea.export-area{width:100%;min-height:200px;font-family:ui-monospace,Menlo,
 <!-- ════════ MODAL ════════ -->
 <div class="scrim" id="modal-overlay"><div class="popup" id="modal-box"></div></div>
 
-<!-- Passphrase per decifrare l'indizio Fase 2 (chiave offuscata, non in chiaro). -->
-<script src="secret.local.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
 //  MODELLO ECONOMICO (offuscato) — deterministico, completamente offline.
@@ -488,10 +475,6 @@ const MODEL = (function(){
 // ═══════════════════════════════════════════════════════════════════════════
 // Nessuna password tra le sezioni: avanzamento e sblocco fasi sono liberi.
 const PASS_RESET  = "ResetStella!";                     // reset partita (admin, nel footer)
-// Indizio Fase 2: la variabile env è offuscata (XOR+base64). La passphrase NON è
-// committata: vive in secret.local.js (gitignored). In chiaro non compare mai nel sorgente.
-const GEMINI_BLOB = "NDEoJSIocnNge2lmAi8QCzAZKAdtES19OiQEAR4JXXxkAE5yDAVaHhJ8WR8jFCQhGyMUOgICfFYdBHpfah1FfgIDPDQ=";
-let _geminiPlain = null;
 const MAX_TENTATIVI = 3;
 const COOLDOWN_MS = { 1: 8*60*1000 };                   // cooldown simulazione — solo Fase 1
 const BUDGET_BASE = [20000, 0];
@@ -987,26 +970,6 @@ function showCopyFallback(text) {
     <div class="mini-note"><a onclick="closeModal()" style="cursor:pointer;color:var(--accent)">Chiudi</a></div>
   `);
   setTimeout(()=>{ const a=document.getElementById("copy-fallback-area"); if(a){ a.focus(); a.select(); } }, 80);
-}
-function geminiReady(){
-  const pass = window.__SECRET_PASS;
-  if (!pass) return false;
-  try {
-    const data = atob(GEMINI_BLOB);
-    let out = "";
-    for (let i=0;i<data.length;i++) out += String.fromCharCode(data.charCodeAt(i) ^ pass.charCodeAt(i % pass.length));
-    _geminiPlain = out;
-    return /^GEMINI_API_KEY=/.test(out);
-  } catch(e){ return false; }
-}
-function copiaGemini(btn){
-  if (!_geminiPlain && !geminiReady()){
-    const old = btn.innerHTML;
-    btn.innerHTML = '<i class="ti ti-alert-triangle"></i> Non disponibile';
-    setTimeout(()=>{ btn.innerHTML = old; }, 1800);
-    return;
-  }
-  copyText(_geminiPlain, btn);
 }
 function copiaParametri(fase, btn) {
   const params = getParams(fase);
